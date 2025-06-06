@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PrivacyPolicy() {
   return (
@@ -8,10 +9,10 @@ export default function PrivacyPolicy() {
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <img src="/images/justloglogo.png" alt="Just Log Logo" className="w-8 h-8" />
+            <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
             <div className="text-xl font-semibold">Just Log</div>
           </Link>
-          <Link 
+          <Link
             href="/"
             className="border-2 border-black bg-white text-black px-4 py-2 rounded hover:bg-gray-50 transition-colors"
           >
@@ -23,12 +24,11 @@ export default function PrivacyPolicy() {
       {/* Privacy Policy Content */}
       <div className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
-        
         <div className="prose prose-lg max-w-none">
           <p><strong>Effective Date:</strong> 05/06/2025</p>
           
           <h2>Our Commitment to Privacy</h2>
-          <p>Just Log is built with privacy at its core. We believe your workout data should remain yours, and we've designed our app to collect only the minimal information necessary to provide our service.</p>
+          <p>Just Log is built with privacy at its core. We believe your workout data should remain yours, and we&apos;ve designed our app to collect only the minimal information necessary to provide our service.</p>
           
           <h2>Information We Collect</h2>
           <h3>Personal Information</h3>
@@ -58,13 +58,13 @@ export default function PrivacyPolicy() {
             <li>Provide customer support when requested</li>
           </ul>
           
-          <h2>What We Don't Do</h2>
+          <h2>What We Don&apos;t Do</h2>
           <ul>
-            <li><strong>No notifications</strong>: We don't send push notifications, emails, or any form of marketing communications</li>
+            <li><strong>No notifications</strong>: We don&apos;t send push notifications, emails, or any form of marketing communications</li>
             <li><strong>No data selling</strong>: We never sell, rent, or share your personal information with third parties</li>
-            <li><strong>No tracking</strong>: We don't track your behavior outside the app</li>
-            <li><strong>No analytics</strong>: We don't use third-party analytics services that collect personal data</li>
-            <li><strong>No social features</strong>: We don't share your data with social networks</li>
+            <li><strong>No tracking</strong>: We don&apos;t track your behavior outside the app</li>
+            <li><strong>No analytics</strong>: We don&apos;t use third-party analytics services that collect personal data</li>
+            <li><strong>No social features</strong>: We don&apos;t share your data with social networks</li>
           </ul>
           
           <h2>Data Storage and Security</h2>
@@ -92,7 +92,7 @@ export default function PrivacyPolicy() {
             <li>Contact us with privacy concerns</li>
           </ul>
           
-          <h2>Children's Privacy</h2>
+          <h2>Children&apos;s Privacy</h2>
           <p>Just Log is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
           
           <h2>Changes to This Policy</h2>
