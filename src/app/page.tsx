@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -13,7 +14,7 @@ export default function Home() {
   const faqs = [
     {
       question: "Why no social features?",
-      answer: "Because you're here to work out, not scroll"
+      answer: "Because you&apos;re here to work out, not scroll"
     },
     {
       question: "Will you add meal tracking?",
@@ -37,7 +38,7 @@ export default function Home() {
     },
     {
       question: "How many exercises do you have?",
-      answer: "Nearly 1000, and we're adding constantly based on user requests."
+      answer: "Nearly 1000, and we&apos;re adding constantly based on user requests."
     }
   ];
 
@@ -47,14 +48,14 @@ export default function Home() {
       <nav className="border-b border-gray-200 px-6 py-4 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src="/images/justloglogo.png" alt="Just Log Logo" className="w-8 h-8" />
+            <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
             <div className="text-xl font-semibold text-black">Just Log</div>
           </div>
           <button 
             onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
             className="border-2 border-[#D97757] bg-[#D97757] text-white px-4 py-2 rounded hover:bg-[#c56647] transition-colors flex items-center gap-2"
           >
-            <img src="/images/playstore.png" alt="Play Store" className="w-5 h-5" />
+            <Image src="/images/playstore.png" alt="Play Store" width={20} height={20} />
             Download
           </button>
         </div>
@@ -80,20 +81,22 @@ export default function Home() {
                 onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
                 className="border-2 border-[#D97757] bg-[#D97757] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#c56647] transition-colors flex items-center justify-center gap-2"
               >
-                <img src="/images/playstore.png" alt="Play Store" className="w-6 h-6" />
+                <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
                 Download for Android
               </button>
               <button className="border-2 border-[#D97757] bg-white text-[#D97757] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
-                <img src="/images/apple.png" alt="App Store" className="w-6 h-6" />
+                <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
                 iOS Coming Soon
               </button>
             </div>
           </div>
           <div className="flex justify-center">
-            <img 
+            <Image 
               src="/images/gymlogauthpage.png" 
               alt="Just Log Auth Page"
-              className="w-80 h-auto rounded-xl shadow-2xl border border-gray-300"
+              width={320}
+              height={640}
+              className="rounded-xl shadow-2xl border border-gray-300"
             />
           </div>
         </div>
@@ -108,31 +111,31 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-8 text-black">Tired of Fighting Your Fitness App?</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">£9.99/month for features you never use</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">Social feeds cluttering your workout screen</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">Constant notifications during dinner</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">Complex interfaces that slow you down</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">AI coaches stating the obvious</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">Scrolling through endless screens to find your routine</p>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/cross.png" alt="Cross" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <p className="text-lg text-gray-700">Loads of screens, clicks, and confusing navigation</p>
                 </div>
               </div>
@@ -143,31 +146,31 @@ export default function Home() {
               <h2 className="text-3xl font-bold mb-8 text-[#D97757]">An app that just logs workouts</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">~1111 exercises with smart search</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">Custom routines and PR tracking</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">Time, weight, and distance logging</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">Custom workout counters</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">Color-coded workout calendar</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">No notifications, ever</span>
                 </div>
                 <div className="flex items-start">
-                  <img src="/images/tick.png" alt="Tick" className="w-6 h-6 mr-3 mt-1 flex-shrink-0" />
+                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-800">No unnecessary data collection</span>
                 </div>
               </div>
@@ -187,46 +190,56 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
             <div className="text-center">
               <h3 className="font-semibold text-black mb-4">Home Screen</h3>
-              <img 
+              <Image 
                 src="/images/1.png" 
                 alt="Home Screen"
-                className="w-48 h-96 rounded-2xl shadow-lg"
+                width={192}
+                height={384}
+                className="rounded-2xl shadow-lg"
               />
               <p className="text-xs text-gray-600 mt-4">Color coded weekly calendar history, Quick Actions, Clean design</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-black mb-4">Workout Logging</h3>
-              <img 
+              <Image 
                 src="/images/2.png" 
                 alt="Workout Logging"
-                className="w-48 h-96 rounded-2xl shadow-lg"
+                width={192}
+                height={384}
+                className="rounded-2xl shadow-lg"
               />
               <p className="text-xs text-gray-600 mt-4">Sets, reps, weight entry, PR tracking</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-black mb-4">Smart Search</h3>
-              <img 
+              <Image 
                 src="/images/3.png" 
                 alt="Smart Search"
-                className="w-48 h-96 rounded-2xl shadow-lg"
+                width={192}
+                height={384}
+                className="rounded-2xl shadow-lg"
               />
               <p className="text-xs text-gray-600 mt-4">Finds bench press even if you type benchpress or bench-press</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-black mb-4">Custom Counters</h3>
-              <img 
+              <Image 
                 src="/images/4.png" 
                 alt="Custom Counters"
-                className="w-48 h-96 rounded-2xl shadow-lg"
+                width={192}
+                height={384}
+                className="rounded-2xl shadow-lg"
               />
               <p className="text-xs text-gray-600 mt-4">Daily tracking, Weekly/monthly totals</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold text-black mb-4">History/Progress</h3>
-              <img 
+              <Image 
                 src="/images/5.png" 
                 alt="History Progress"
-                className="w-48 h-96 rounded-2xl shadow-lg"
+                width={192}
+                height={384}
+                className="rounded-2xl shadow-lg"
               />
               <p className="text-xs text-gray-600 mt-4"> Color-coded calendar and past workouts</p>
             </div>
@@ -241,27 +254,27 @@ export default function Home() {
           <div className="relative overflow-hidden">
             <div className="flex gap-8 animate-scroll">
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"Finally, an app that doesn't buzz me during meetings"</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;Finally, an app that doesn&apos;t buzz me during meetings&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Sarah, Beta User</cite>
               </blockquote>
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"It's so simple I thought it was broken. Then I realized that's the point."</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;It&apos;s so simple I thought it was broken. Then I realized that&apos;s the point.&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Mike, Powerlifter</cite>
               </blockquote>
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"This is what fitness apps should have been from the start"</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;This is what fitness apps should have been from the start&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Alex, Personal Trainer</cite>
               </blockquote>
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"I can log my entire workout in under 2 minutes"</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;I can log my entire workout in under 2 minutes&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Jamie, Busy Parent</cite>
               </blockquote>
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"Finally, an app that doesn't buzz me during meetings"</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;Finally, an app that doesn&apos;t buzz me during meetings&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Sarah, Beta User</cite>
               </blockquote>
               <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">"It's so simple I thought it was broken. Then I realized that's the point."</p>
+                <p className="text-lg italic mb-4 text-gray-800">&quot;It&apos;s so simple I thought it was broken. Then I realized that&apos;s the point.&quot;</p>
                 <cite className="text-[#D97757] font-medium">- Mike, Powerlifter</cite>
               </blockquote>
             </div>
@@ -274,13 +287,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-black">As <span className="text-[#D97757]">Featured In</span></h2>
           <p className="text-2xl mb-4 text-gray-700">Nowhere yet 😅</p>
-          <p className="text-lg text-gray-600 mb-12">We're pre-launch, but we're confident we'll be featured in:</p>
+          <p className="text-lg text-gray-600 mb-12">We&apos;re pre-launch, but we&apos;re confident we&apos;ll be featured in:</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {/* TechCrunch */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <img src="/images/techcrunch.png" alt="TechCrunch" className="w-16 h-8 object-contain" />
+                <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully)</p>
             </div>
@@ -288,7 +301,7 @@ export default function Home() {
             {/* Product Hunt */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <img src="/images/producthunt.jpg" alt="Product Hunt" className="w-16 h-16 object-contain" />
+                <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(definitely submitting)</p>
             </div>
@@ -296,15 +309,15 @@ export default function Home() {
             {/* Fitness Blog */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <img src="/images/youtube.png" alt="Fitness Blog" className="w-12 h-12 object-contain" />
+                <Image src="/images/youtube.png" alt="Fitness Blog" width={48} height={48} className="object-contain" />
               </div>
-              <p className="text-sm text-gray-600 font-medium">That fitness channel<br/>your mate watch</p>
+              <p className="text-sm text-gray-600 font-medium">That fitness channel<br/>your mate watches</p>
             </div>
 
             {/* Group Chat */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <img src="/images/whatsapp.png" alt="Group Chat" className="w-12 h-12 object-contain" />
+                <Image src="/images/whatsapp.png" alt="Group Chat" width={48} height={48} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">Your group chat<br/>when you recommend us</p>
             </div>
@@ -312,7 +325,7 @@ export default function Home() {
             {/* Your Phone */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <img src="/images/smartphone.png" alt="Your Phone" className="w-8 h-12 object-contain text-[#D97757]" />
+                <Image src="/images/smartphone.png" alt="Your Phone" width={32} height={48} className="object-contain text-[#D97757]" />
               </div>
               <p className="text-sm text-[#D97757] font-semibold">Your Phone<br/>Soon</p>
             </div>
@@ -406,17 +419,17 @@ export default function Home() {
       <section className="px-6 py-16 bg-black text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Ready to <span className="text-[#D97757]">simplify</span> your workouts?</h2>
-          <p className="text-xl mb-8 text-gray-300">Join thousands who've ditched the bloated fitness apps</p>
+          <p className="text-xl mb-8 text-gray-300">Join thousands who&apos;ve ditched the bloated fitness apps</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
               onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
               className="border-2 border-[#D97757] bg-[#D97757] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#c56647] transition-colors flex items-center justify-center gap-2"
             >
-              <img src="/images/playstore.png" alt="Play Store" className="w-6 h-6" />
+              <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
               Download for Android
             </button>
             <button className="border-2 border-[#D97757] bg-white text-[#D97757] px-8 py-3 rounded-lg text-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
-              <img src="/images/apple.png" alt="App Store" className="w-6 h-6" />
+              <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
               iOS Coming Soon
             </button>
           </div>
@@ -429,7 +442,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img src="/images/justloglogo.png" alt="Just Log Logo" className="w-6 h-6" />
+                <Image src="/images/justloglogo.png" alt="Just Log Logo" width={24} height={24} />
                 <div className="text-xl font-semibold text-black">Just Log</div>
               </div>
               <p className="text-gray-600">The anti-thesis of complicated fitness apps</p>
@@ -456,8 +469,6 @@ export default function Home() {
                 >
                   Join Waitlist
                 </button>
-               
-               
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-black">Contact</h4>
