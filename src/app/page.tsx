@@ -73,9 +73,9 @@ export default function Home() {
               The minimalist workout tracker that gets out of your way
             </h2>
             <p className="text-lg text-gray-800 mb-8 leading-relaxed">
-              While other apps add social feeds and meal planning, Just Log focuses on one thing: efficient workout logging. 
-              <span className="text-[#c81d25] font-semibold"> £1.79/month vs £9.99 competitors.</span>
-            </p>
+            🏋️‍♂️ People who <span className="text-[#c81d25] font-semibold">log workouts</span> are 2x more likely to stick to their routine and make gains
+            <span className="text-[#c81d25] font-semibold"> £1.79/month</span> vs £9.99 competitors.
+                        </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
