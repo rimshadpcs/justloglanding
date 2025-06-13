@@ -73,7 +73,7 @@ export default function Home() {
               The minimalist workout tracker that gets out of your way
             </h2>
             <p className="text-lg text-gray-800 mb-8 leading-relaxed">
-            🏋️‍♂️ People who <span className="text-[#c81d25] font-semibold">log workouts</span> are 2x more likely to stick to their routine and make gains
+            🏋️‍♂️ People who <span className="text-[#c81d25] font-semibold">log workouts</span> are 2x more likely to stick to their routine and make gains, No social feeds, no distractions, just results.
             <span className="text-[#c81d25] font-semibold"> £1.79/month</span> vs £9.99 competitors.
                         </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -246,6 +246,60 @@ export default function Home() {
           </div>
         </div>
       </section>
+{/* Why Users Stick Section */}
+<section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-8 text-black">Why Users Actually <span className="text-[#c81d25]">Stick</span> With Just Log</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <Image 
+                src="/images/stick1.png" 
+                alt="No overwhelming features"
+                width={120}
+                height={120}
+                className="mx-auto mb-8"
+              />
+              <p className="text-xl font-semibold text-gray-800">No overwhelming features to ignore</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <Image 
+                src="/images/stick2.png" 
+                alt="Workouts logged in seconds"
+                width={120}
+                height={120}
+                className="mx-auto mb-8"
+              />
+              <p className="text-xl font-semibold text-gray-800">Workouts logged in seconds</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <Image 
+                src="/images/stick3.png" 
+                alt="See what you did, choose what's next"
+                width={120}
+                height={120}
+                className="mx-auto mb-8"
+              />
+              <p className="text-xl font-semibold text-gray-800">See what you did, choose what's next</p>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+              <Image 
+                src="/images/stick4.png" 
+                alt="Zero notifications means zero guilt"
+                width={120}
+                height={120}
+                className="mx-auto mb-8"
+              />
+              <p className="text-xl font-semibold text-gray-800">Zero notifications means zero guilt</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <section className="px-6 py-16 bg-white">
@@ -333,45 +387,115 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Price Evolution Graph Section */}
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-black">Simple Pricing for <span className="text-[#c81d25]">Simple Apps</span></h2>
+          <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Expensive</span></h2>
+          <p className="text-xl text-center mb-12 text-gray-700">The price creep over the years</p>
           
-          <div className="flex flex-wrap justify-center gap-8 mb-12">
-            <div className="p-6 border-2 border-[#c81d25] rounded-lg bg-white shadow-lg max-w-sm">
-              <h3 className="text-2xl font-bold mb-3 text-[#c81d25]">Just Log</h3>
-              <div className="text-3xl font-bold mb-2 text-black">£1.79<span className="text-lg">/month</span></div>
-              <div className="text-gray-600 mb-4">or £17.99/year</div>
-              <div className="text-sm text-gray-700">
-                <div>• All features included</div>
-                <div>• Unlimited custom counters</div>
-                <div>• Cancel anytime</div>
+          {/* Graph Container */}
+          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
+            <div className="relative h-96">
+              {/* Y-axis labels */}
+              <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-600">
+                <span>£12</span>
+                <span>£10</span>
+                <span>£8</span>
+                <span>£6</span>
+                <span>£4</span>
+                <span>£2</span>
+                <span>£0</span>
               </div>
-            </div>
-
-            <div className="p-6 border-2 border-gray-300 rounded-lg bg-gray-50 opacity-75 max-w-sm">
-              <h3 className="text-2xl font-bold mb-3 text-gray-600">Competitors</h3>
-              <div className="text-3xl font-bold mb-2 text-gray-600">£9.99<span className="text-lg">/month</span></div>
-              <div className="text-gray-500 mb-4">(£120/year)</div>
-              <div className="text-sm text-gray-600">
-                <div>• Bloated features</div>
-                <div>• Social feeds</div>
-                <div>• Constant notifications</div>
+              
+              {/* Graph area */}
+              <div className="ml-12 mr-4 h-full relative">
+                {/* Grid lines */}
+                <div className="absolute inset-0">
+                  <div className="h-full flex flex-col justify-between">
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-200"></div>
+                    <div className="border-t border-gray-300"></div>
+                  </div>
+                </div>
+                
+                {/* Line graph */}
+                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300">
+                  {/* Main trend line */}
+                  <polyline
+                    fill="none"
+                    stroke="#6b7280"
+                    strokeWidth="3"
+                    points="20,225 120,150 220,112.5 320,75"
+                  />
+                  
+                  {/* Just Log point */}
+                  <circle cx="380" cy="258" r="8" fill="#c81d25" stroke="white" strokeWidth="3"/>                  
+                  {/* Data points */}
+                  <circle cx="20" cy="225" r="6" fill="#6b7280"/>
+                  <circle cx="120" cy="150" r="6" fill="#6b7280"/>
+                  <circle cx="220" cy="112.5" r="6" fill="#6b7280"/>
+                  <circle cx="320" cy="75" r="6" fill="#6b7280"/>
+                </svg>
+                
+                {/* Data point labels */}
+                <div className="absolute" style={{left: '5%', bottom: '25%'}}>
+                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
+                    <div className="font-bold text-gray-800">£2.99</div>
+                    <div className="text-xs text-gray-600">Simple apps</div>
+                  </div>
+                </div>
+                
+                <div className="absolute" style={{left: '30%', bottom: '50%'}}>
+                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
+                    <div className="font-bold text-gray-800">£5.99</div>
+                    <div className="text-xs text-gray-600">+ Social features</div>
+                  </div>
+                </div>
+                
+                <div className="absolute" style={{left: '55%', bottom: '62.5%'}}>
+                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
+                    <div className="font-bold text-gray-800">£7.99</div>
+                    <div className="text-xs text-gray-600">+ AI coaches</div>
+                  </div>
+                </div>
+                
+                <div className="absolute" style={{left: '80%', bottom: '75%'}}>
+                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
+                    <div className="font-bold text-gray-800">£9.99</div>
+                    <div className="text-xs text-gray-600">Everything included</div>
+                  </div>
+                </div>
+                
+                {/* Just Log highlight */}
+                <div className="absolute" style={{right: '5%', bottom: '14%'}}>
+                  <div className="bg-[#c81d25] text-white rounded-lg p-4 shadow-lg text-center border-2 border-white">
+                    <div className="flex items-center justify-center gap-1 mb-1">
+                      <span className="text-xl font-bold">£1.79</span>
+                      <span className="text-yellow-300">⭐</span>
+                    </div>
+                    <div className="text-sm font-semibold">Just Log</div>
+                    <div className="text-xs opacity-90">Back to basics</div>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div className="p-6 bg-[#c81d25] border-2 border-[#c81d25] rounded-lg shadow-lg max-w-sm text-white">
-              <h3 className="text-2xl font-bold mb-3">You Save</h3>
-              <div className="text-3xl font-bold mb-2">£102<span className="text-lg">/year</span></div>
-              <div className="text-orange-100 mb-4">vs competitors</div>
-              <div className="text-sm text-orange-100">
-                <div>• 85% cheaper</div>
-                <div>• No feature bloat</div>
-                <div>• Your data stays yours</div>
+              
+              {/* X-axis labels */}
+              <div className="absolute bottom-0 left-12 right-4 flex justify-between text-sm text-gray-600 mt-4">
+                <span>2015</span>
+                <span>2018</span>
+                <span>2021</span>
+                <span>2024</span>
+                <span className="text-[#c81d25] font-bold">Now</span>
               </div>
             </div>
           </div>
+          
+        {/* Bottom summary */}
+        
         </div>
       </section>
 
