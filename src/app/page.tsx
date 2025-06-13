@@ -484,10 +484,10 @@ export default function Home() {
               
               {/* X-axis labels */}
               <div className="absolute bottom-0 left-12 right-4 flex justify-between text-sm text-gray-600 mt-4">
-                <span>2015</span>
-                <span>2018</span>
-                <span>2021</span>
-                <span>2024</span>
+                <span>2017</span>
+                <span>2019</span>
+                <span>2022</span>
+                <span>2025</span>
                 <span className="text-[#c81d25] font-bold">Now</span>
               </div>
             </div>
