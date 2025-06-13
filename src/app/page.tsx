@@ -284,8 +284,7 @@ export default function Home() {
                 height={120}
                 className="mx-auto mb-8"
               />
-              <p className="text-xl font-semibold text-gray-800">See what you did, choose what's next</p>
-            </div>
+<p className="text-xl font-semibold text-gray-800">See what you did, choose what&apos;s next quickly - that simple</p>            </div>
             
             <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
               <Image 
