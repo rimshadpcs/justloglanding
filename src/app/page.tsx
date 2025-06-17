@@ -14,7 +14,7 @@ export default function Home() {
   const faqs = [
     {
       question: "Why no social features?",
-      answer: "Because you&apos;re here to work out, not scroll"
+      answer: "Because you are here to work out, not scroll"
     },
     {
       question: "Will you add meal tracking?",
@@ -38,7 +38,7 @@ export default function Home() {
     },
     {
       question: "How many exercises do you have?",
-      answer: "Nearly 1000, and we&apos;re adding constantly based on user requests."
+      answer: "Nearly 1000, and we are adding constantly based on user requests."
     }
   ];
 
