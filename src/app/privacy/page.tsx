@@ -62,10 +62,24 @@ export default function PrivacyPolicy() {
           <ul>
             <li><strong>No notifications</strong>: We don&apos;t send push notifications, emails, or any form of marketing communications</li>
             <li><strong>No data selling</strong>: We never sell, rent, or share your personal information with third parties</li>
-            <li><strong>No tracking</strong>: We don&apos;t track your behavior outside the app</li>
-            <li><strong>No analytics</strong>: We don&apos;t use third-party analytics services that collect personal data</li>
+            <li><strong>No external tracking</strong>: We don&apos;t track your behavior outside the app</li>
+            <li><strong>No marketing analytics</strong>: Analytics are used solely for app improvement</li>
+            <li><strong>No personal data in analytics</strong>: Workout content and personal details aren&apos;t tracked</li>
             <li><strong>No social features</strong>: We don&apos;t share your data with social networks</li>
           </ul>
+          
+          <h2>Firebase Analytics Data Collection</h2>
+          <p>We collect the following analytics data to improve Just Log:</p>
+          <ul>
+            <li>Authentication and user session data</li>
+            <li>Workout completion patterns and abandonment rates</li>
+            <li>Feature usage statistics (counters, settings, routines)</li>
+            <li>Subscription and premium feature usage</li>
+            <li>App performance and crash data</li>
+            <li>User preferences (theme, units) for analytics segmentation</li>
+          </ul>
+          <p>This data is associated with your user account but contains no personal workout details (specific exercises, weights, or personal information).</p>
+          <p><strong>Opt out of analytics data collection</strong> (contact us)</p>
           
           <h2>Data Storage and Security</h2>
           <ul>
