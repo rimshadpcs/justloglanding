@@ -353,12 +353,12 @@ export default function Home() {
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
               </div>
-              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(<span className="line-through" style={{textDecorationThickness: '2px'}}>definitely submitting</span> Actually featured!)</p>
+              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(<span className="line-through">definitely submitting</span> Actually featured!)</p>
             </div>
 
             {/* TechCrunch */}
             <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
+              <div className="w-24 h-24 bg-white rounded-lg bosrder border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully)</p>
