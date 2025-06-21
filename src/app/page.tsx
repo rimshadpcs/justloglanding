@@ -51,13 +51,18 @@ export default function Home() {
             <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
             <div className="text-xl font-semibold text-black">Just Log</div>
           </div>
-          <button 
-            onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-            className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-4 py-2 rounded hover:bg-[#d80032] transition-colors flex items-center gap-2"
-          >
-            <Image src="/images/playstore.png" alt="Play Store" width={20} height={20} />
-            Download
-          </button>
+          <div className="flex items-center gap-4">
+            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
+              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '200px', height: '43px'}} width="200" height="43" />
+            </a>
+            <button 
+              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
+              className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-4 py-2 rounded hover:bg-[#d80032] transition-colors flex items-center gap-2"
+            >
+              <Image src="/images/playstore.png" alt="Play Store" width={20} height={20} />
+              Download
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -343,20 +348,20 @@ export default function Home() {
           <p className="text-lg text-gray-600 mb-12">We&apos;re pre-launch, but we&apos;re confident we&apos;ll be featured in:</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+            {/* Product Hunt */}
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
+                <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
+              </div>
+              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(<span className="line-through" style={{textDecorationThickness: '2px'}}>definitely submitting</span> Actually featured!)</p>
+            </div>
+
             {/* TechCrunch */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully)</p>
-            </div>
-
-            {/* Product Hunt */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(definitely submitting)</p>
             </div>
 
             {/* Fitness Blog */}
@@ -568,7 +573,10 @@ export default function Home() {
                 <Image src="/images/justloglogo.png" alt="Just Log Logo" width={24} height={24} />
                 <div className="text-xl font-semibold text-black">Just Log</div>
               </div>
-              <p className="text-gray-600">The anti-thesis of complicated fitness apps</p>
+              <p className="text-gray-600 mb-4">The anti-thesis of complicated fitness apps</p>
+              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              </a>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-black">Legal</h4>
