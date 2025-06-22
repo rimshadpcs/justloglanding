@@ -57,7 +57,7 @@ export default function Home() {
             </a>
             <button 
               onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-              className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-4 py-2 rounded hover:bg-[#d80032] transition-colors flex items-center gap-2"
+              className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-4 py-2 rounded hover:bg-[#d80032] hover:scale-105 transition-all duration-300 flex items-center gap-2 hover:shadow-lg"
             >
               <Image src="/images/playstore.png" alt="Play Store" width={20} height={20} />
               Download
@@ -69,7 +69,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
+          <div className="animate-slideInLeft">
             <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight text-black">
               Just Log.<br />
               <span className="text-[#c81d25]">No Fluff.</span>
@@ -84,24 +84,24 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
                 onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-                className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#d80032] transition-colors flex items-center justify-center gap-2"
+                className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#d80032] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
               >
                 <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
                 Download for Android
               </button>
-              <button className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+              <button className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg">
                 <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
                 iOS Coming Soon
               </button>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center animate-slideInRight">
             <Image 
               src="/images/gymlogauthpage.png" 
               alt="Just Log Auth Page"
               width={320}
               height={640}
-              className="rounded-xl shadow-2xl border border-gray-300"
+              className="rounded-xl shadow-2xl border border-gray-300 animate-float"
             />
           </div>
         </div>
@@ -112,7 +112,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             {/* Problems - Left Side */}
-            <div>
+            <div className="animate-slideInLeft">
               <h2 className="text-3xl font-bold mb-8 text-black">Tired of Fighting Your Fitness App?</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -147,7 +147,7 @@ export default function Home() {
             </div>
 
             {/* Solutions - Right Side */}
-            <div>
+            <div className="animate-slideInRight">
               <h2 className="text-3xl font-bold mb-8 text-[#c81d25]">An app that just logs workouts</h2>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -187,64 +187,64 @@ export default function Home() {
       {/* Screenshots Section */}
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fadeInUp">
             <h2 className="text-4xl font-bold mb-8 text-black">See it in <span className="text-[#c81d25]">action</span></h2>
           </div>
           
           {/* Features Screenshots - Proper Styling */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
-            <div className="text-center">
+            <div className="text-center animate-fadeInUp">
               <h3 className="font-semibold text-black mb-4">Home Screen</h3>
               <Image 
                 src="/images/1.png" 
                 alt="Home Screen"
                 width={192}
                 height={384}
-                className="rounded-2xl shadow-lg"
+                className="hover:scale-110 transition-transform duration-300"
               />
               <p className="text-xs text-gray-600 mt-4">Color coded weekly calendar history, Quick Actions, Clean design</p>
             </div>
-            <div className="text-center">
+            <div className="text-center animate-fadeInUp animate-delay-200">
               <h3 className="font-semibold text-black mb-4">Workout Logging</h3>
               <Image 
                 src="/images/2.png" 
                 alt="Workout Logging"
                 width={192}
                 height={384}
-                className="rounded-2xl shadow-lg"
+                className="hover:scale-110 transition-transform duration-300"
               />
               <p className="text-xs text-gray-600 mt-4">Sets, reps, weight entry, PR tracking</p>
             </div>
-            <div className="text-center">
+            <div className="text-center animate-fadeInUp animate-delay-400">
               <h3 className="font-semibold text-black mb-4">Smart Search</h3>
               <Image 
                 src="/images/3.png" 
                 alt="Smart Search"
                 width={192}
                 height={384}
-                className="rounded-2xl shadow-lg"
+                className="hover:scale-110 transition-transform duration-300"
               />
               <p className="text-xs text-gray-600 mt-4">Finds bench press even if you type benchpress or bench-press</p>
             </div>
-            <div className="text-center">
+            <div className="text-center animate-fadeInUp animate-delay-600">
               <h3 className="font-semibold text-black mb-4">Custom Counters</h3>
               <Image 
                 src="/images/4.png" 
                 alt="Custom Counters"
                 width={192}
                 height={384}
-                className="rounded-2xl shadow-lg"
+                className="hover:scale-110 transition-transform duration-300"
               />
               <p className="text-xs text-gray-600 mt-4">Daily tracking, Weekly/monthly totals</p>
             </div>
-            <div className="text-center">
+            <div className="text-center animate-fadeInUp animate-delay-800">
               <h3 className="font-semibold text-black mb-4">History/Progress</h3>
               <Image 
                 src="/images/5.png" 
                 alt="History Progress"
                 width={192}
                 height={384}
-                className="rounded-2xl shadow-lg"
+                className="hover:scale-110 transition-transform duration-300"
               />
               <p className="text-xs text-gray-600 mt-4"> Color-coded calendar and past workouts</p>
             </div>
@@ -254,12 +254,12 @@ export default function Home() {
 {/* Why Users Stick Section */}
 <section className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fadeInUp">
             <h2 className="text-4xl font-bold mb-8 text-black">Why Users Actually <span className="text-[#c81d25]">Stick</span> With Just Log</h2>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
               <Image 
                 src="/images/stick1.png" 
                 alt="No overwhelming features"
@@ -270,7 +270,7 @@ export default function Home() {
               <p className="text-xl font-semibold text-gray-800">No overwhelming features to ignore</p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
               <Image 
                 src="/images/stick2.png" 
                 alt="Workouts logged in seconds"
@@ -281,7 +281,7 @@ export default function Home() {
               <p className="text-xl font-semibold text-gray-800">Workouts logged in seconds</p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
               <Image 
                 src="/images/stick3.png" 
                 alt="See what you did, choose what's next"
@@ -291,7 +291,7 @@ export default function Home() {
               />
 <p className="text-xl font-semibold text-gray-800">See what you did, choose what&apos;s next quickly - that simple</p>            </div>
             
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
               <Image 
                 src="/images/stick4.png" 
                 alt="Zero notifications means zero guilt"
@@ -506,10 +506,10 @@ export default function Home() {
       {/* FAQ Section */}
       <section className="px-6 py-16 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-black">Common <span className="text-[#c81d25]">Questions</span></h2>
+          <h2 className="text-4xl font-bold text-center mb-16 text-black animate-fadeInUp">Common <span className="text-[#c81d25]">Questions</span></h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#FAF9F5] rounded-lg shadow-sm overflow-hidden border border-gray-200">
+              <div key={index} className="bg-[#FAF9F5] rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-300">
                 <button
                   onClick={() => toggleFaq(index)}
                   className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
@@ -595,7 +595,7 @@ export default function Home() {
                 </Link>
               </div>
               <button 
-                  onClick={() => window.open('https://waitlister.me/p/justlog', '_blank')}
+                  onClick={() => window.open('https://tally.so/r/3xoLdv', '_blank')}
                   className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-6 py-2 rounded hover:bg-gray-50 transition-colors w-full"
                 >
                   Join Waitlist
