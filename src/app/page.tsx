@@ -380,12 +380,14 @@ export default function Home() {
               <p className="text-sm text-gray-600 font-medium">Your group chat<br/>when you recommend us</p>
             </div>
 
-            {/* Your Phone */}
+            {/* Fazier */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/smartphone.png" alt="Your Phone" width={32} height={48} className="object-contain text-[#c81d25]" />
+                <a href="https://fazier.com" target="_blank">
+                  <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width="250" alt="Fazier badge" className="object-contain" />
+                </a>
               </div>
-              <p className="text-sm text-[#c81d25] font-semibold">Your Phone<br/>Soon</p>
+              <p className="text-sm text-gray-600 font-medium">Fazier<br/>(Featured)</p>
             </div>
           </div>
         </div>
