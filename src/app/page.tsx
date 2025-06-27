@@ -52,16 +52,12 @@ export default function Home() {
             <div className="text-xl font-semibold text-black">Just Log</div>
           </div>
           <div className="flex items-center gap-4">
+            <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
+              <img src="https://www.uneed.best/POTD2A.png" style={{width: '200px'}} alt="Uneed POTD2 Badge" />
+            </a>
             <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
               <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '200px', height: '43px'}} width="200" height="43" />
             </a>
-            <button 
-              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-              className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-4 py-2 rounded hover:bg-[#d80032] hover:scale-105 transition-all duration-300 flex items-center gap-2 hover:shadow-lg"
-            >
-              <Image src="/images/playstore.png" alt="Play Store" width={20} height={20} />
-              Download
-            </button>
           </div>
         </div>
       </nav>
@@ -356,6 +352,16 @@ export default function Home() {
               <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(<span className="line-through">definitely submitting</span> Actually featured!)</p>
             </div>
 
+            {/* Uneed */}
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm p-2">
+                <a href="https://www.uneed.best/tool/justlog-workout" className="w-full h-full">
+                  <Image src="/images/og.png" alt="Uneed" width={80} height={80} className="object-contain w-full h-full" />
+                </a>
+              </div>
+              <p className="text-sm text-gray-600 font-medium">Uneed<br/>(we won yay)</p>
+            </div>
+
             {/* TechCrunch */}
             <div className="flex flex-col items-center space-y-3">
               <div className="w-24 h-24 bg-white rounded-lg bosrder border-gray-200 flex items-center justify-center shadow-sm">
@@ -378,16 +384,6 @@ export default function Home() {
                 <Image src="/images/whatsapp.png" alt="Group Chat" width={48} height={48} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">Your group chat<br/>when you recommend us</p>
-            </div>
-
-            {/* Fazier */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <a href="https://fazier.com" target="_blank">
-                  <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&theme=light" width="250" alt="Fazier badge" className="object-contain" />
-                </a>
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Fazier<br/>(Featured)</p>
             </div>
           </div>
         </div>
@@ -578,6 +574,9 @@ export default function Home() {
               <p className="text-gray-600 mb-4">The anti-thesis of complicated fitness apps</p>
               <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
                 <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              </a>
+              <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
+                <img src="https://www.uneed.best/POTD2A.png" style={{width: '250px'}} alt="Uneed POTD2 Badge" />
               </a>
             </div>
             <div>
