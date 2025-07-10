@@ -43,7 +43,7 @@ export default function TermsOfService() {
           
           <h2>Subscription and Payment</h2>
           <ul>
-            <li>Just Log operates on a subscription model (£1.79/month or £17.99/year)</li>
+            <li>Just Log operates on a subscription model ($1.99/month or $19.99/year)</li>
             <li>Subscriptions automatically renew unless cancelled</li>
             <li>You can cancel your subscription at any time through your device&apos;s app store</li>
             <li>Refunds are handled according to the app store&apos;s refund policy</li>

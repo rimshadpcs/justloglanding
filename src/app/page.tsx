@@ -75,7 +75,7 @@ export default function Home() {
             </h2>
             <p className="text-lg text-gray-800 mb-8 leading-relaxed">
             🏋️‍♂️ People who <span className="text-[#c81d25] font-semibold">log workouts</span> are 2x more likely to stick to their routine and make gains, No social feeds, no distractions, just results.
-            <span className="text-[#c81d25] font-semibold"> £1.79/month</span> vs £9.99 competitors.
+            <span className="text-[#c81d25] font-semibold"> $1.99/month</span> vs $9.99 competitors.
                         </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
@@ -113,7 +113,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">£9.99/month for features you never use</p>
+                  <p className="text-lg text-gray-700">$9.99/month for features you never use</p>
                 </div>
                 <div className="flex items-start">
                   <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
@@ -400,13 +400,13 @@ export default function Home() {
             <div className="relative h-96">
               {/* Y-axis labels */}
               <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-600">
-                <span>£12</span>
-                <span>£10</span>
-                <span>£8</span>
-                <span>£6</span>
-                <span>£4</span>
-                <span>£2</span>
-                <span>£0</span>
+                <span>$12</span>
+                <span>$10</span>
+                <span>$8</span>
+                <span>$6</span>
+                <span>$4</span>
+                <span>$2</span>
+                <span>$0</span>
               </div>
               
               {/* Graph area */}
@@ -446,28 +446,28 @@ export default function Home() {
                 {/* Data point labels */}
                 <div className="absolute" style={{left: '5%', bottom: '25%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">£2.99</div>
+                    <div className="font-bold text-gray-800">$2.99</div>
                     <div className="text-xs text-gray-600">Simple apps</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '30%', bottom: '50%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">£5.99</div>
+                    <div className="font-bold text-gray-800">$5.99</div>
                     <div className="text-xs text-gray-600">+ Social features</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '55%', bottom: '62.5%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">£7.99</div>
+                    <div className="font-bold text-gray-800">$7.99</div>
                     <div className="text-xs text-gray-600">+ AI coaches</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '80%', bottom: '75%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">£9.99</div>
+                    <div className="font-bold text-gray-800">$9.99</div>
                     <div className="text-xs text-gray-600">Everything included</div>
                   </div>
                 </div>
@@ -476,7 +476,7 @@ export default function Home() {
                 <div className="absolute" style={{right: '5%', bottom: '14%'}}>
                   <div className="bg-[#c81d25] text-white rounded-lg p-4 shadow-lg text-center border-2 border-white">
                     <div className="flex items-center justify-center gap-1 mb-1">
-                      <span className="text-xl font-bold">£1.79</span>
+                      <span className="text-xl font-bold">$1.99</span>
                       <span className="text-yellow-300">⭐</span>
                     </div>
                     <div className="text-sm font-semibold">Just Log</div>
