@@ -85,9 +85,12 @@ export default function Home() {
                 <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
                 Download for Android
               </button>
-              <button className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg">
+              <button 
+                onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+                className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
+              >
                 <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
-                iOS Coming Soon
+                Download for iOS
               </button>
             </div>
           </div>
@@ -554,9 +557,12 @@ export default function Home() {
               <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
               Download for Android
             </button>
-            <button className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
+            <button 
+              onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+              className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
+            >
               <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
-              iOS Coming Soon
+              Download for iOS
             </button>
           </div>
         </div>
