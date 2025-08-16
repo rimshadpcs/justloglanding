@@ -365,28 +365,28 @@ export default function Home() {
               <p className="text-sm text-gray-600 font-medium">Uneed<br/>(we won yay)</p>
             </div>
 
+            {/* IndieHackers */}
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
+                <Image src="/images/indiehackers.jpg" alt="IndieHackers" width={64} height={64} className="object-contain" />
+              </div>
+              <p className="text-sm text-gray-600 font-medium">IndieHackers<br/>(indie vibes)</p>
+            </div>
+
+            {/* HackerNews */}
+            <div className="flex flex-col items-center space-y-3">
+              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
+                <Image src="/images/hackernews.png" alt="HackerNews" width={64} height={64} className="object-contain" />
+              </div>
+              <p className="text-sm text-gray-600 font-medium">Hacker News<br/>(featured on hacker news show section)</p>
+            </div>
+
             {/* TechCrunch */}
             <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg bosrder border-gray-200 flex items-center justify-center shadow-sm">
+              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
               </div>
               <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully)</p>
-            </div>
-
-            {/* Fitness Blog */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/youtube.png" alt="Fitness Blog" width={48} height={48} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">That fitness channel<br/>your mate watches</p>
-            </div>
-
-            {/* Group Chat */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/whatsapp.png" alt="Group Chat" width={48} height={48} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Your group chat<br/>when you recommend us</p>
             </div>
           </div>
         </div>
@@ -601,12 +601,6 @@ export default function Home() {
                   Terms of Service
                 </Link>
               </div>
-              <button 
-                  onClick={() => window.open('https://tally.so/r/3xoLdv', '_blank')}
-                  className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-6 py-2 rounded hover:bg-gray-50 transition-colors w-full"
-                >
-                  Join Waitlist
-                </button>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-black">Contact</h4>
