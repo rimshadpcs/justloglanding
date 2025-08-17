@@ -6,9 +6,27 @@ import Image from 'next/image';
 
 export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  const testimonials = [
+    "Amazing UI design and colors. Really clean and easy on the eyes",
+    "Love that weekly calendar part. So easy to see my past and next routines. Very efficient",
+    "Very clever concept with PR tracking. Other apps don't show your best specific set. Motivates me to beat it every time",
+    "Accidentally closed the app but my workout progress was saved. Great!",
+    "So easy to add custom exercises. Exactly what I needed",
+    "Always had issues searching exercises in other apps. Worried about missing spaces or hyphens, but this search actually works"
+  ];
+
+  const nextTestimonial = () => {
+    setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const faqs = [
@@ -307,35 +325,65 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-black">What <span className="text-[#c81d25]">Beta Users</span> Say</h2>
-          <div className="relative overflow-hidden">
-            <div className="flex gap-8 animate-scroll">
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;Finally, an app that doesn&apos;t buzz me during meetings&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Sarah, Beta User</cite>
-              </blockquote>
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;It&apos;s so simple I thought it was broken. Then I realized that&apos;s the point.&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Mike, Powerlifter</cite>
-              </blockquote>
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;This is what fitness apps should have been from the start&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Alex, Personal Trainer</cite>
-              </blockquote>
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;I can log my entire workout in under 2 minutes&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Jamie, Busy Parent</cite>
-              </blockquote>
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;Finally, an app that doesn&apos;t buzz me during meetings&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Sarah, Beta User</cite>
-              </blockquote>
-              <blockquote className="bg-[#FAF9F5] p-8 rounded-lg shadow-sm min-w-72 max-w-72 h-48 flex flex-col justify-between flex-shrink-0 border border-gray-200">
-                <p className="text-lg italic mb-4 text-gray-800">&quot;It&apos;s so simple I thought it was broken. Then I realized that&apos;s the point.&quot;</p>
-                <cite className="text-[#c81d25] font-medium">- Mike, Powerlifter</cite>
-              </blockquote>
+          <h2 className="text-4xl font-bold text-center mb-16 text-black">What <span className="text-[#c81d25]">Early Users</span> Say</h2>
+          <div className="relative flex items-center justify-center">
+            {/* Left Arrow */}
+            <button 
+              onClick={prevTestimonial}
+              className="absolute left-0 z-10 p-3 bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              <svg className="w-6 h-6 text-[#c81d25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Infinite Testimonials Carousel */}
+            <div className="overflow-hidden w-full max-w-5xl mx-auto">
+              <div 
+                className="flex gap-8 transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(calc(50% - ${(testimonialIndex + testimonials.length) * 320}px - 160px))`
+                }}
+              >
+                {/* Triple the testimonials for infinite effect */}
+                {[...testimonials, ...testimonials, ...testimonials].map((testimonial, globalIndex) => {
+                  const centerIndex = testimonialIndex + testimonials.length;
+                  const isCenter = globalIndex === centerIndex;
+                  const isAdjacent = Math.abs(globalIndex - centerIndex) === 1;
+                  
+                  return (
+                    <blockquote 
+                      key={globalIndex}
+                      className={`flex-shrink-0 w-72 h-48 flex flex-col justify-center rounded-lg transition-all duration-500 ease-in-out ${
+                        isCenter 
+                          ? 'bg-[#FAF9F5] transform scale-110 shadow-lg z-10 p-8' 
+                          : isAdjacent 
+                            ? 'bg-[#FAF9F5] border border-gray-200 opacity-60 transform scale-90 p-6 shadow-sm'
+                            : 'bg-[#FAF9F5] border border-gray-200 opacity-20 transform scale-75 p-6'
+                      }`}
+                    >
+                      <p className={`italic text-gray-800 text-center transition-all duration-500 ${
+                        isCenter ? 'text-lg font-semibold' : 'text-sm'
+                      }`}>
+                        &quot;{testimonial}&quot;
+                      </p>
+                    </blockquote>
+                  );
+                })}
+              </div>
             </div>
+
+            {/* Right Arrow */}
+            <button 
+              onClick={nextTestimonial}
+              className="absolute right-0 z-10 p-3 bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            >
+              <svg className="w-6 h-6 text-[#c81d25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
+
         </div>
       </section>
 
@@ -343,8 +391,7 @@ export default function Home() {
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8 text-black">As <span className="text-[#c81d25]">Featured In</span></h2>
-          <p className="text-2xl mb-4 text-gray-700">Nowhere yet 😅</p>
-          <p className="text-lg text-gray-600 mb-12">We&apos;re pre-launch, but we&apos;re confident we&apos;ll be featured in:</p>
+          <p className="text-lg text-gray-600 mb-12">We&apos;re proud to be getting featured in:</p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {/* Product Hunt */}
@@ -352,7 +399,7 @@ export default function Home() {
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
               </div>
-              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(<span className="line-through">definitely submitting</span> Actually featured!)</p>
+              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(Actually featured!)</p>
             </div>
 
             {/* Uneed */}
@@ -378,7 +425,7 @@ export default function Home() {
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/hackernews.png" alt="HackerNews" width={64} height={64} className="object-contain" />
               </div>
-              <p className="text-sm text-gray-600 font-medium">Hacker News<br/>(featured on hacker news show section)</p>
+              <p className="text-sm text-gray-600 font-medium">Hacker News<br/>(featured on show section)</p>
             </div>
 
             {/* TechCrunch */}
@@ -386,7 +433,7 @@ export default function Home() {
               <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
                 <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
               </div>
-              <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully)</p>
+              <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully oneday)</p>
             </div>
           </div>
         </div>
@@ -396,7 +443,8 @@ export default function Home() {
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Expensive</span></h2>
-          <p className="text-xl text-center mb-12 text-gray-700">The price creep over the years</p>
+          <p className="text-xl text-center mb-6 text-gray-700">The price creep over the years</p>
+          <p className="text-lg text-center mb-12 text-gray-600">While everyone else added features you don't need, we went back to basics with honest pricing</p>
           
           {/* Graph Container */}
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
