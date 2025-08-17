@@ -444,7 +444,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Expensive</span></h2>
           <p className="text-xl text-center mb-6 text-gray-700">The price creep over the years</p>
-          <p className="text-lg text-center mb-12 text-gray-600">While everyone else added features you don't need, we went back to basics with honest pricing</p>
+          <p className="text-lg text-center mb-12 text-gray-600">While everyone else added features you don&apos;t need, we went back to basics with honest pricing</p>
           
           {/* Graph Container */}
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
