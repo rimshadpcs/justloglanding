@@ -73,8 +73,8 @@ export default function Home() {
             <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
               <img src="https://www.uneed.best/POTD2A.png" style={{width: '200px'}} alt="Uneed POTD2 Badge" />
             </a>
-            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
-              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '200px', height: '43px'}} width="200" height="43" />
+            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
+              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
             </a>
           </div>
         </div>
@@ -626,8 +626,8 @@ export default function Home() {
                 <div className="text-xl font-semibold text-black">Just Log</div>
               </div>
               <p className="text-gray-600 mb-4">The anti-thesis of complicated fitness apps</p>
-              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log" target="_blank">
-                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=981643&theme=dark&t=1750506829527" alt="Just&#0032;Log - Minimalistic&#0032;workout&#0032;logging&#0032;app | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
               </a>
               <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
                 <img src="https://www.uneed.best/POTD2A.png" style={{width: '250px'}} alt="Uneed POTD2 Badge" />
