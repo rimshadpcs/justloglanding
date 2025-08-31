@@ -398,7 +398,7 @@ export default function Home() {
             <div className="flex flex-col items-center space-y-3">
               <div className="bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm p-2">
                 <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '120px', height: '26px'}} width="120" height="26" />
+                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=light&t=1756634766125" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '120px', height: '26px'}} width="120" height="26" />
                 </a>
               </div>
               <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(Featured!)</p>
