@@ -73,8 +73,8 @@ export default function Home() {
             <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
               <img src="https://www.uneed.best/POTD2A.png" style={{width: '200px'}} alt="Uneed POTD2 Badge" />
             </a>
-            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-              <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
+              <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
             </a>
           </div>
         </div>
@@ -396,10 +396,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
             {/* Product Hunt */}
             <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/producthunt.jpg" alt="Product Hunt" width={64} height={64} className="object-contain" />
+              <div className="bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm p-2">
+                <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
+                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '120px', height: '26px'}} width="120" height="26" />
+                </a>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(Actually featured!)</p>
+              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(Featured!)</p>
             </div>
 
             {/* Uneed */}
@@ -626,8 +628,8 @@ export default function Home() {
                 <div className="text-xl font-semibold text-black">Just Log</div>
               </div>
               <p className="text-gray-600 mb-4">The anti-thesis of complicated fitness apps</p>
-              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=dark&t=1756550159898" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
               </a>
               <a href="https://www.uneed.best/tool/justlog-workout" target="_blank">
                 <img src="https://www.uneed.best/POTD2A.png" style={{width: '250px'}} alt="Uneed POTD2 Badge" />
