@@ -89,11 +89,11 @@ export default function Home() {
               <span className="text-[#c81d25]">No Fluff.</span>
             </h1>
             <h2 className="text-xl text-gray-700 mb-6">
-              The minimalist workout tracker that gets out of your way
+              The workout tracker that gets out of your way.
             </h2>
             <p className="text-lg text-gray-800 mb-8 leading-relaxed">
-            🏋️‍♂️ People who <span className="text-[#c81d25] font-semibold">log workouts</span> are 2x more likely to stick to their routine and make gains, No social feeds, no distractions, just results.
-            <span className="text-[#c81d25] font-semibold"> $1.99/month</span> vs $9.99 competitors.
+            🏋️ Log it fast. See your progress. Stay consistent.<br/>
+            Track it → Beat it → Get stronger 💪
                         </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
@@ -444,22 +444,22 @@ export default function Home() {
       {/* Price Evolution Graph Section */}
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Expensive</span></h2>
-          <p className="text-xl text-center mb-6 text-gray-700">The price creep over the years</p>
-          <p className="text-lg text-center mb-12 text-gray-600">While everyone else added features you don&apos;t need, we went back to basics with honest pricing</p>
+          <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Bloated</span></h2>
+          <p className="text-xl text-center mb-6 text-gray-700">While others added social feeds, AI coaches, and clutter, we kept workouts simple</p>
+          <p className="text-lg text-center mb-12 text-gray-600">Every year apps get more complex. We chose to go the opposite direction.</p>
           
           {/* Graph Container */}
           <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
             <div className="relative h-96">
               {/* Y-axis labels */}
               <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-600">
-                <span>$12</span>
-                <span>$10</span>
-                <span>$8</span>
-                <span>$6</span>
-                <span>$4</span>
-                <span>$2</span>
-                <span>$0</span>
+                <span>Bloated</span>
+                <span>Complex</span>
+                <span>Features+</span>
+                <span>Growing</span>
+                <span>Adding</span>
+                <span>Basic</span>
+                <span>Simple</span>
               </div>
               
               {/* Graph area */}
@@ -484,7 +484,7 @@ export default function Home() {
                     fill="none"
                     stroke="#6b7280"
                     strokeWidth="3"
-                    points="20,225 120,150 220,112.5 320,75"
+                    points="20,225 120,150 220,112.5 320,62.5"
                   />
                   
                   {/* Just Log point */}
@@ -493,35 +493,35 @@ export default function Home() {
                   <circle cx="20" cy="225" r="6" fill="#6b7280"/>
                   <circle cx="120" cy="150" r="6" fill="#6b7280"/>
                   <circle cx="220" cy="112.5" r="6" fill="#6b7280"/>
-                  <circle cx="320" cy="75" r="6" fill="#6b7280"/>
+                  <circle cx="320" cy="62.5" r="6" fill="#6b7280"/>
                 </svg>
                 
                 {/* Data point labels */}
                 <div className="absolute" style={{left: '5%', bottom: '25%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">$2.99</div>
-                    <div className="text-xs text-gray-600">Simple apps</div>
+                    <div className="font-bold text-gray-800">Simple</div>
+                    <div className="text-xs text-gray-600">Basic logging</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '30%', bottom: '50%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">$5.99</div>
-                    <div className="text-xs text-gray-600">+ Social features</div>
+                    <div className="font-bold text-gray-800">+ Social</div>
+                    <div className="text-xs text-gray-600">Feeds & sharing</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '55%', bottom: '62.5%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">$7.99</div>
-                    <div className="text-xs text-gray-600">+ AI coaches</div>
+                    <div className="font-bold text-gray-800">+ AI coaches</div>
+                    <div className="text-xs text-gray-600">Smart suggestions</div>
                   </div>
                 </div>
                 
                 <div className="absolute" style={{left: '80%', bottom: '75%'}}>
                   <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">$9.99</div>
-                    <div className="text-xs text-gray-600">Everything included</div>
+                    <div className="font-bold text-gray-800">+ Everything</div>
+                    <div className="text-xs text-gray-600">Kitchen sink apps</div>
                   </div>
                 </div>
                 
@@ -529,11 +529,10 @@ export default function Home() {
                 <div className="absolute" style={{right: '5%', bottom: '14%'}}>
                   <div className="bg-[#c81d25] text-white rounded-lg p-4 shadow-lg text-center border-2 border-white">
                     <div className="flex items-center justify-center gap-1 mb-1">
-                      <span className="text-xl font-bold">$1.99</span>
-                      <span className="text-yellow-300">⭐</span>
+                      <span className="text-lg font-bold">Back to basics</span>
                     </div>
                     <div className="text-sm font-semibold">Just Log</div>
-                    <div className="text-xs opacity-90">Back to basics</div>
+                    <div className="text-xs opacity-90">Simple workouts</div>
                   </div>
                 </div>
               </div>
