@@ -84,6 +84,17 @@ export default function Home() {
       <section className="px-6 py-16 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="animate-slideInLeft">
+            <div className="flex mb-2">
+              <div className="ml-[7ch]">
+                <Image 
+                  src="/images/download.png" 
+                  alt="4.8 stars, 5000+ downloads in App Store" 
+                  width={100} 
+                  height={50}
+                  className="animate-fadeInUp"
+                />
+              </div>
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight text-black">
               Just Log.<br />
               <span className="text-[#c81d25]">No Fluff.</span>
@@ -91,7 +102,7 @@ export default function Home() {
             <h2 className="text-xl text-gray-700 mb-6">
               The workout tracker that gets out of your way.
             </h2>
-            <p className="text-lg text-gray-800 mb-8 leading-relaxed">
+            <p className="text-lg text-gray-800 mb-6 leading-relaxed">
             🏋️ Log it fast. See your progress. Stay consistent.<br/>
             Track it → Beat it → Get stronger 💪
                         </p>
