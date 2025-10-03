@@ -419,7 +419,7 @@ export default function Home() {
                   <Image src="/images/og.png" alt="Uneed" width={80} height={80} className="object-contain w-full h-full" />
                 </a>
               </div>
-              <p className="text-sm text-gray-600 font-medium">Uneed<br/>(Featured in "top tracking apps of the year")</p>
+              <p className="text-sm text-gray-600 font-medium">Uneed<br/>(Featured in &quot;top tracking apps of the year&quot;)</p>
             </div>
 
             {/* IndieHackers */}
