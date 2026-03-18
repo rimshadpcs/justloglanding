@@ -1,25 +1,61 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+const testimonials = [
+  "Amazing UI design and colors. Really clean and easy on the eyes",
+  "Love that weekly calendar part. So easy to see my past and next routines. Very efficient",
+  "Very clever concept with PR tracking. Other apps don't show your best specific set. Motivates me to beat it every time",
+  "Accidentally closed the app but my workout progress was saved. Great!",
+  "So easy to add custom exercises. Exactly what I needed",
+  "Always had issues searching exercises in other apps. Worried about missing spaces or hyphens, but this search actually works"
+];
+
+const faqs = [
+  {
+    question: "Why no social features?",
+    answer: "Because you are here to work out, not scroll"
+  },
+  {
+    question: "Will you add meal tracking?",
+    answer: "No. Use a dedicated nutrition app"
+  },
+  {
+    question: "Any notifications?",
+    answer: "Zero. Your workout time is sacred"
+  },
+  {
+    question: "Data export?",
+    answer: "Yes, your data stays yours"
+  },
+  {
+    question: "Can I create custom exercises?",
+    answer: "Yes, with your choice of exercise type and muscle groups. Build your workout, your way."
+  },
+  {
+    question: "Do you have training instructions?",
+    answer: "No, people use YouTube anyway. We assume you know how to exercise."
+  },
+  {
+    question: "How many exercises do you have?",
+    answer: "Nearly 1000, and we are adding constantly based on user requests."
+  }
+];
 
 export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index);
   };
-
-  const testimonials = [
-    "Amazing UI design and colors. Really clean and easy on the eyes",
-    "Love that weekly calendar part. So easy to see my past and next routines. Very efficient",
-    "Very clever concept with PR tracking. Other apps don't show your best specific set. Motivates me to beat it every time",
-    "Accidentally closed the app but my workout progress was saved. Great!",
-    "So easy to add custom exercises. Exactly what I needed",
-    "Always had issues searching exercises in other apps. Worried about missing spaces or hyphens, but this search actually works"
-  ];
 
   const nextTestimonial = () => {
     setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
@@ -29,39 +65,8 @@ export default function Home() {
     setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const faqs = [
-    {
-      question: "Why no social features?",
-      answer: "Because you are here to work out, not scroll"
-    },
-    {
-      question: "Will you add meal tracking?",
-      answer: "No. Use a dedicated nutrition app"
-    },
-    {
-      question: "Any notifications?",
-      answer: "Zero. Your workout time is sacred"
-    },
-    {
-      question: "Data export?",
-      answer: "Yes, your data stays yours"
-    },
-    {
-      question: "Can I create custom exercises?",
-      answer: "Yes, with your choice of exercise type and muscle groups. Build your workout, your way."
-    },
-    {
-      question: "Do you have training instructions?",
-      answer: "No, people use YouTube anyway. We assume you know how to exercise."
-    },
-    {
-      question: "How many exercises do you have?",
-      answer: "Nearly 1000, and we are adding constantly based on user requests."
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-black font-['Vaground']">
+    <div className="min-h-screen bg-[#FAF9F5] text-black font-vaground">
       {/* Navigation - Simple */}
       <nav className="border-b border-gray-200 px-6 py-4 bg-[#FAF9F5]">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
@@ -71,7 +76,13 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-              <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
+              <Image 
+                src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" 
+                alt="Just Log - No fluff workout tracker | Product Hunt" 
+                width={250} 
+                height={54}
+                unoptimized
+              />
             </a>
           </div>
         </div>
@@ -79,56 +90,88 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="px-6 py-16 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="animate-slideInLeft">
-            <div className="flex mb-2">
-              <div className="ml-[7ch]">
-                <Image 
-                  src="/images/download.png" 
-                  alt="4.8 stars, 5000+ downloads in App Store" 
-                  width={100} 
-                  height={50}
-                  className="animate-fadeInUp"
-                />
-              </div>
-            </div>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 animate-fadeInUp">
+
+          {/* Left Column — Text + Badge + Buttons */}
+          <div className="flex-1 flex flex-col items-start text-left">
             <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight text-black">
               Just Log.<br />
               <span className="text-[#c81d25]">No Fluff.</span>
             </h1>
-            <h2 className="text-xl text-gray-700 mb-6">
+            <h2 className="text-xl text-gray-700 mb-4">
               The workout tracker that gets out of your way.
             </h2>
-            <p className="text-lg text-gray-800 mb-6 leading-relaxed">
-            🏋️ Log it fast. See your progress. Stay consistent.<br/>
-            Track it → Beat it → Get stronger 💪
-                        </p>
+            <p className="text-lg text-gray-800 mb-8 leading-relaxed">
+              🏋️ Log it fast. See your progress. Stay consistent.<br/>
+              Track it → Beat it → Get stronger 💪
+            </p>
+
+            {/* Download Badge */}
+            <div className="flex items-center gap-3 mb-6 animate-fadeInUp">
+              <Image 
+                src="/images/oliveleft.png" 
+                alt="Left Olive Branch" 
+                width={32} 
+                height={64}
+                className="object-contain"
+              />
+              <div className="flex flex-col items-center justify-center">
+                <span className="font-bold text-xl text-black leading-none mb-1">4.7</span>
+                <div className="flex text-[#FFB800] text-sm leading-none mb-1 tracking-[0.1em]">
+                  ★★★★★
+                </div>
+                <span className="text-[11px] font-sans font-bold text-[#c81d25] leading-none mb-0.5">20000+ downloads</span>
+                <span className="text-[9px] font-sans text-gray-500 font-medium leading-none">in App Store</span>
+              </div>
+              <Image 
+                src="/images/oliveright.png" 
+                alt="Right Olive Branch" 
+                width={32} 
+                height={64}
+                className="object-contain"
+              />
+            </div>
+
+            {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <button 
-                onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-                className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#d80032] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
+                onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+                className="hover:scale-105 transition-transform duration-300"
               >
-                <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
-                Download for Android
+                <Image 
+                  src="/images/app-store.png" 
+                  alt="Download on the App Store" 
+                  width={150} 
+                  height={45} 
+                  className="object-contain"
+                />
               </button>
               <button 
-                onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
-                className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg"
+                onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
+                className="hover:scale-105 transition-transform duration-300"
               >
-                <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
-                Download for iOS
+                <Image 
+                  src="/images/google-play.png" 
+                  alt="Get it on Google Play" 
+                  width={150} 
+                  height={45} 
+                  className="object-contain"
+                />
               </button>
             </div>
           </div>
-          <div className="flex justify-center animate-slideInRight">
+
+          {/* Right Column — App Screenshot */}
+          <div className="flex-shrink-0 flex justify-center animate-slideInRight">
             <Image 
               src="/images/gymlogauthpage.png" 
               alt="Just Log Auth Page"
-              width={320}
-              height={640}
+              width={300}
+              height={600}
               className="rounded-xl shadow-2xl border border-gray-300 animate-float"
             />
           </div>
+
         </div>
       </section>
 
@@ -350,7 +393,9 @@ export default function Home() {
               <div 
                 className="flex gap-8 transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: `translateX(calc(50% - ${(testimonialIndex + testimonials.length) * 320}px - 160px))`
+                  transform: mounted 
+                    ? `translateX(calc(50% - ${(testimonialIndex + testimonials.length) * 320}px - 160px))`
+                    : 'translateX(0)'
                 }}
               >
                 {/* Triple the testimonials for infinite effect */}
@@ -608,18 +653,28 @@ export default function Home() {
           <p className="text-xl mb-8 text-gray-300">Join thousands who&apos;ve ditched the bloated fitness apps</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
-              className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-8 py-3 rounded-lg text-lg hover:bg-[#d80032] transition-colors flex items-center justify-center gap-2"
+              onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+              className="hover:scale-105 transition-transform duration-300 flex justify-center"
             >
-              <Image src="/images/playstore.png" alt="Play Store" width={24} height={24} />
-              Download for Android
+              <Image 
+                src="/images/app-store.png" 
+                alt="Download on the App Store" 
+                width={150} 
+                height={45} 
+                className="object-contain"
+              />
             </button>
             <button 
-              onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
-              className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-8 py-3 rounded-lg text-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
+              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
+              className="hover:scale-105 transition-transform duration-300 flex justify-center"
             >
-              <Image src="/images/apple.png" alt="App Store" width={24} height={24} />
-              Download for iOS
+              <Image 
+                src="/images/google-play.png" 
+                alt="Get it on Google Play" 
+                width={150} 
+                height={45} 
+                className="object-contain"
+              />
             </button>
           </div>
         </div>

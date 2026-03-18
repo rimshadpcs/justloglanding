@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-white text-black font-['Vaground']">
+    <div className="min-h-screen bg-white text-black font-vaground">
       {/* Navigation */}
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
