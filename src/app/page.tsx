@@ -134,8 +134,10 @@ export default function Home() {
 
             {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button 
-                onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+              <a 
+                href="https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:scale-105 transition-transform duration-300"
               >
                 <Image 
@@ -145,9 +147,11 @@ export default function Home() {
                   height={45} 
                   className="object-contain"
                 />
-              </button>
-              <button 
-                onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
+              </a>
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.rimapps.justlog"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:scale-105 transition-transform duration-300"
               >
                 <Image 
@@ -157,7 +161,7 @@ export default function Home() {
                   height={45} 
                   className="object-contain"
                 />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -652,8 +656,10 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8">Ready to <span className="text-[#c81d25]">simplify</span> your workouts?</h2>
           <p className="text-xl mb-8 text-gray-300">Join thousands who&apos;ve ditched the bloated fitness apps</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => window.open('https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793', '_blank')}
+            <a 
+              href="https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:scale-105 transition-transform duration-300 flex justify-center"
             >
               <Image 
@@ -663,9 +669,11 @@ export default function Home() {
                 height={45} 
                 className="object-contain"
               />
-            </button>
-            <button 
-              onClick={() => window.open('https://play.google.com/store/apps/details?id=com.rimapps.justlog', '_blank')}
+            </a>
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.rimapps.justlog"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:scale-105 transition-transform duration-300 flex justify-center"
             >
               <Image 
@@ -675,7 +683,7 @@ export default function Home() {
                 height={45} 
                 className="object-contain"
               />
-            </button>
+            </a>
           </div>
         </div>
       </section>
