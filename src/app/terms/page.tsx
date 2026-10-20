@@ -4,13 +4,13 @@ import Image from 'next/image';
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen bg-white text-black font-vaground">
+    <div className="min-h-screen bg-jl-bg text-jl-text font-sans">
       {/* Navigation */}
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
-            <div className="text-xl font-semibold">Just Log</div>
+            <Image src="/images/logan/icon-final.png" alt="Justlog logo" width={32} height={32} className="rounded-[7px]" />
+            <div className="text-xl font-semibold">Justlog</div>
           </Link>
           <Link
             href="/"
@@ -123,7 +123,7 @@ export default function TermsOfService() {
           <p>These terms are governed by applicable law, without regard to conflict of law principles.</p>
           
           <h2>Contact Information</h2>
-          <p>Questions about these terms? Contact us at: rimshadpcs@gmail.com</p>
+          <p>Questions about these terms? Contact us at: <a href="mailto:justlogapp@gmail.com" className="underline">justlogapp@gmail.com</a></p>
           
           <h2>Entire Agreement</h2>
           <p>These Terms of Service, along with our Privacy Policy, constitute the entire agreement between you and Just Log.</p>

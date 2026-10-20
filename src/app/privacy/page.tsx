@@ -4,13 +4,13 @@ import Image from 'next/image';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white text-black font-vaground">
+    <div className="min-h-screen bg-jl-bg text-jl-text font-sans">
       {/* Navigation */}
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
-            <div className="text-xl font-semibold">Just Log</div>
+            <Image src="/images/logan/icon-final.png" alt="Justlog logo" width={32} height={32} className="rounded-[7px]" />
+            <div className="text-xl font-semibold">Justlog</div>
           </Link>
           <Link
             href="/"
@@ -80,7 +80,12 @@ export default function PrivacyPolicy() {
           </ul>
           <p>This data is associated with your user account but contains no personal workout details (specific exercises, weights, or personal information).</p>
           <p><strong>Opt out of analytics data collection</strong> (contact us)</p>
-          
+
+          <h2>Routine Import (“Paste a routine”)</h2>
+          <p>When you use Paste a routine, Justlog reads the text you paste to turn it into a workout routine. If the text isn’t in our recommended format, part or all of it may be sent securely to our service provider, Google (Gemini API, accessed through Google Firebase), to identify the exercises, sets and reps. We send only the text you pasted. We don’t send your name, email address or other account details with it.</p>
+          <p>Google processes this text only to return the formatted routine to us. Under Google’s terms for paid API services, it doesn’t use this text to train or improve its models. Google may keep it for a limited time to detect and prevent abuse. Justlog doesn’t store the pasted text. Only the routine you choose to create is saved to your account.</p>
+          <p>Don’t paste information you don’t want processed this way, such as health details or other personal notes. You can always create routines by hand instead.</p>
+
           <h2>Data Storage and Security</h2>
           <ul>
             <li>Your data is stored securely using industry-standard encryption</li>
@@ -113,9 +118,9 @@ export default function PrivacyPolicy() {
           <p>We may update this privacy policy occasionally. Any changes will be posted in the app and on our website. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
           
           <h2>Contact Us</h2>
-          <p>If you have questions about this privacy policy or your data, contact us at: rimshadpcs@gmail.com</p>
+          <p>If you have questions about this privacy policy or your data, contact us at: <a href="mailto:justlogapp@gmail.com" className="underline">justlogapp@gmail.com</a></p>
           
-          <p><em>Last updated: 05/06/2025</em></p>
+          <p><em>Last updated: 10/17/2026</em></p>
         </div>
       </div>
     </div>

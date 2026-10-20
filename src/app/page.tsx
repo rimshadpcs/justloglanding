@@ -1,755 +1,726 @@
-"use client";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  CONTACT_URL,
+  Check,
+  Cross,
+  FEEDBACK_URL,
+  INSTAGRAM_URL,
+  Phone,
+  ProductHuntBadge,
+  StoreButtons,
+  UNEED_URL,
+} from "@/components/landing";
+import { ShareStoryMockup, TutorialMockup } from "@/components/showcase";
+import { WidgetShowcase } from "@/components/widgets";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+const container = "mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-20 min-[1400px]:px-[120px]";
+const h2 = "m-0 text-[40px] font-bold leading-[1.02] tracking-[-0.04em] sm:text-[56px]";
+const eyebrow = "text-sm font-semibold tracking-[0.1em]";
+
+const otherApps = [
+  "$9.99/month for features you never use",
+  "Social feeds on your workout screen",
+  "AI coaches stating the obvious",
+  "Five taps to find today’s routine",
+  "Pings during dinner",
+];
+
+const justlogPerks = [
+  "1,100+ exercises with smart search",
+  "Last, best and PRs on every set",
+  "Weight, reps, time and distance",
+  "Colour-coded calendar and counters",
+  "Notifications only while you train",
+  "No unnecessary data collection",
+];
+
+// offset: how far the phone is pulled up so the relevant part of the screen shows in the card.
+const features = [
+  {
+    title: "Last & best on every set",
+    body: "See what you lifted last time and your best, right next to the set you’re logging.",
+    screen: "workout",
+    offset: -30,
+  },
+  {
+    title: "Finds it however you type it",
+    body: "benchpress, bench-press or bench press. 1,100+ exercises, one search.",
+    screen: "picker",
+    offset: 0,
+  },
+  {
+    title: "A calendar that tells the story",
+    body: "Every workout coloured by routine. Spot your rhythm, and the gaps, at a glance.",
+    screen: "history",
+    offset: 0,
+  },
+  {
+    title: "Log sets from the lock screen",
+    body: "Complete a set and watch your rest timer without opening the app.",
+    screen: "notification",
+    offset: -60,
+  },
+  {
+    title: "Rate how it felt",
+    body: "Meh, Solid or Crushed it. Next time, you’ll know what you were up against.",
+    screen: "finish",
+    offset: 0,
+  },
+  {
+    title: "Counters for everything else",
+    body: "Push-ups through the day? Tap +1 and see today, this week and all time.",
+    screen: "counter-stats",
+    offset: -169,
+  },
+  {
+    title: "Full-screen timer for timed sets",
+    body: "Planks, holds and carries: start a timed set and it goes full screen. Play, pause, +10s, done.",
+    screen: "timer",
+    offset: -40,
+  },
+  {
+    title: "Every PR, celebrated",
+    body: "Beat your best and you’ll know instantly. No digging through charts.",
+    screen: "workout-pr",
+    offset: 0,
+  },
+];
+
+const tabataPoints = [
+  {
+    title: "A timer you can see from across the room",
+    body: "Lime for work, dark for rest. Rounds, beeps and lock-screen controls.",
+  },
+  { title: "It actually tracks", body: "Log reps between rounds and see where you faded." },
+  { title: "Beat last time", body: "Total reps, PRs and a weekly view, just for Tabata." },
+];
+
+const importSources = [
+  { title: "Apple Notes", sub: "or any notes app", icon: "M6 3h9l4 4v14H6zM14 3v5h5M9 12h7M9 16h5" },
+  { title: "Your trainer", sub: "their message or plan", icon: "M4 5h16v11H9l-5 4zM8 9h8M8 12h5" },
+  {
+    title: "An AI chat",
+    sub: "the plan it wrote you",
+    icon: "M12 3l1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6L4.5 10.5l5.6-1.9z",
+  },
+  { title: "Other apps", sub: "export a CSV and import", icon: "M12 4v11M7 10l5 5 5-5M5 19h14" },
+];
+
+const importedExercises = [
+  { name: "Bench Press", sub: "Chest · barbell", sets: "4 × 8" },
+  { name: "Incline Dumbbell Press", sub: "Chest · dumbbell", sets: "3 × 10" },
+  { name: "Cable Fly", sub: "New exercise", sets: "3 × 12", isNew: true },
+  { name: "Lateral Raise", sub: "Shoulders · dumbbell", sets: "3 sets" },
+];
+
+const shareStyles = ["Photo", "Transparent", "Card", "Stats", "Text"];
+
+const shareTargets = [
+  {
+    name: "Instagram Stories",
+    icon: "M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
+  },
+  { name: "TikTok", icon: "M9 18V6l10-2v12M9 18a3 3 0 1 1-3-3 3 3 0 0 1 3 3zM19 16a3 3 0 1 1-3-3 3 3 0 0 1 3 3z" },
+  { name: "Snapchat", icon: "M4 8h3l2-3h6l2 3h3v11H4zM12 10.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" },
+];
 
 const testimonials = [
-  "Amazing UI design and colors. Really clean and easy on the eyes",
-  "Love that weekly calendar part. So easy to see my past and next routines. Very efficient",
-  "Very clever concept with PR tracking. Other apps don't show your best specific set. Motivates me to beat it every time",
-  "Accidentally closed the app but my workout progress was saved. Great!",
-  "So easy to add custom exercises. Exactly what I needed",
-  "Always had issues searching exercises in other apps. Worried about missing spaces or hyphens, but this search actually works"
+  {
+    quote:
+      "Always had issues searching exercises in other apps. Worried about missing spaces or hyphens, but this search actually works.",
+    highlight: false,
+  },
+  { quote: "Amazing UI design and colors. Really clean and easy on the eyes.", highlight: true },
+  {
+    quote: "Love that weekly calendar part. So easy to see my past and next routines. Very efficient.",
+    highlight: false,
+  },
+];
+
+const moods = [
+  { img: "logan-meh", label: "😐 Meh", alt: "Logan, Meh" },
+  { img: "logan-solid", label: "💪 Solid", alt: "Logan, Solid" },
+  { img: "logan-crushed-it", label: "🔥 Crushed it", alt: "Logan, Crushed it" },
 ];
 
 const faqs = [
   {
-    question: "Why no social features?",
-    answer: "Because you are here to work out, not scroll"
+    q: "Why is Logan a beaver?",
+    a: "Beavers turn trees into logs. You turn workouts into logs. A little more each time.",
   },
+  { q: "Why no social features?", a: "Your workout isn’t content. No feeds, no followers, no likes." },
+  { q: "Will you add meal tracking?", a: "No. Justlog does one job and does it well." },
+  { q: "Any notifications?", a: "Only while you train: rest timer and set controls. Never marketing." },
+  { q: "Can I create custom exercises?", a: "Yes. Add any exercise tracked by weight, reps, time or distance." },
+  { q: "How many exercises are there?", a: "1,100+, with search that ignores spaces and hyphens." },
+  { q: "Is it free?", a: "Logging is free forever. Pro adds extras when you want them." },
   {
-    question: "Will you add meal tracking?",
-    answer: "No. Use a dedicated nutrition app"
+    q: "Can I bring my routine from another app?",
+    a: "Yes. Paste it from your notes, a trainer or an AI chat, or import a CSV export.",
   },
-  {
-    question: "Any notifications?",
-    answer: "Zero. Your workout time is sacred"
-  },
-  {
-    question: "Data export?",
-    answer: "Yes, your data stays yours"
-  },
-  {
-    question: "Can I create custom exercises?",
-    answer: "Yes, with your choice of exercise type and muscle groups. Build your workout, your way."
-  },
-  {
-    question: "Do you have training instructions?",
-    answer: "No, people use YouTube anyway. We assume you know how to exercise."
-  },
-  {
-    question: "How many exercises do you have?",
-    answer: "Nearly 1000, and we are adding constantly based on user requests."
-  }
 ];
 
-export default function Home() {
-  const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const toggleFaq = (index: number) => {
-    setExpandedFaq(expandedFaq === index ? null : index);
-  };
-
-  const nextTestimonial = () => {
-    setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
+function Logo({ size = 36, radius = 8 }: { size?: number; radius?: number }) {
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-black font-vaground">
-      {/* Navigation - Simple */}
-      <nav className="border-b border-gray-200 px-6 py-4 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Image src="/images/justloglogo.png" alt="Just Log Logo" width={32} height={32} />
-            <div className="text-xl font-semibold text-black">Just Log</div>
+    <Image
+      src="/images/logan/icon-final.png"
+      alt=""
+      width={size}
+      height={size}
+      className="block shrink-0"
+      style={{ borderRadius: radius }}
+    />
+  );
+}
+
+export default function Home() {
+  return (
+    <div className="min-h-screen overflow-x-clip bg-jl-bg text-jl-text">
+      {/* Header */}
+      <header className={`${container} flex h-20 items-center gap-6 lg:h-24 lg:gap-10`}>
+        <Link href="/" className="flex items-center gap-3 text-jl-text">
+          <Logo />
+          <span className="text-[22px] font-semibold tracking-[-0.02em]">Justlog</span>
+        </Link>
+        <nav aria-label="Main" className="hidden flex-1 justify-center gap-6 whitespace-nowrap text-base lg:flex xl:gap-8">
+          <a href="#features" className="text-jl-muted transition-colors hover:text-jl-text">Features</a>
+          <a href="#tabata" className="text-jl-muted transition-colors hover:text-jl-text">Tabata</a>
+          <a href="#widgets" className="text-jl-muted transition-colors hover:text-jl-text">Widgets</a>
+          <a href="#why" className="text-jl-muted transition-colors hover:text-jl-text">Why Justlog</a>
+          <a href="#logan" className="text-jl-muted transition-colors hover:text-jl-text">Meet Logan</a>
+          <a href="#faq" className="text-jl-muted transition-colors hover:text-jl-text">FAQ</a>
+        </nav>
+        <div className="ml-auto flex items-center gap-3 lg:ml-0">
+          <div className="hidden sm:block lg:hidden xl:block">
+            <ProductHuntBadge />
           </div>
-          <div className="flex items-center gap-4">
-            <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-              <Image 
-                src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" 
-                alt="Just Log - No fluff workout tracker | Product Hunt" 
-                width={250} 
-                height={54}
-                unoptimized
-              />
-            </a>
-          </div>
+          <a
+            href="#download"
+            className="flex h-[50px] items-center rounded-2xl bg-jl-text px-[22px] text-[15px] font-semibold text-jl-bg transition-opacity hover:opacity-85"
+          >
+            Download
+          </a>
         </div>
-      </nav>
+      </header>
 
-      {/* Hero Section */}
-      <section className="px-6 py-16 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 animate-fadeInUp">
-
-          {/* Left Column — Text + Badge + Buttons */}
-          <div className="flex-1 flex flex-col items-start text-left">
-            <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight text-black">
-              Just Log.<br />
-              <span className="text-[#c81d25]">No Fluff.</span>
+      <main>
+        {/* Hero */}
+        <section
+          className={`${container} grid items-center gap-10 pb-6 pt-8 lg:min-h-[760px] lg:grid-cols-2 lg:pt-0`}
+        >
+          <div className="flex flex-col gap-7">
+            <h1 className="m-0 text-[60px] font-bold leading-[0.95] tracking-[-0.05em] sm:text-[80px] xl:text-[96px]">
+              Just log.
+              <br />
+              <span className="mt-2.5 inline-block -rotate-2 rounded-[22px] bg-jl-accent px-[18px] pb-1.5 text-jl-onaccent">
+                No fluff.
+              </span>
             </h1>
-            <h2 className="text-xl text-gray-700 mb-4">
-              The workout tracker that gets out of your way.
-            </h2>
-            <p className="text-lg text-gray-800 mb-8 leading-relaxed">
-              🏋️ Log it fast. See your progress. Stay consistent.<br/>
-              Track it → Beat it → Get stronger 💪
+            <p className="m-0 max-w-[500px] text-lg leading-[1.45] text-jl-muted sm:text-[21px]">
+              The workout tracker that gets out of your way. See what you lifted last time, beat it, log the set.
             </p>
-
-            {/* Download Badge */}
-            <div className="flex items-center gap-3 mb-6 animate-fadeInUp">
-              <Image 
-                src="/images/oliveleft.png" 
-                alt="Left Olive Branch" 
-                width={32} 
-                height={64}
-                className="object-contain"
-              />
-              <div className="flex flex-col items-center justify-center">
-                <span className="font-bold text-xl text-black leading-none mb-1">4.7</span>
-                <div className="flex text-[#FFB800] text-sm leading-none mb-1 tracking-[0.1em]">
-                  ★★★★★
-                </div>
-                <span className="text-[11px] font-sans font-bold text-[#c81d25] leading-none mb-0.5">20000+ downloads</span>
-                <span className="text-[9px] font-sans text-gray-500 font-medium leading-none">in App Store</span>
-              </div>
-              <Image 
-                src="/images/oliveright.png" 
-                alt="Right Olive Branch" 
-                width={32} 
-                height={64}
-                className="object-contain"
-              />
-            </div>
-
-            {/* Download Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a 
-                href="https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-105 transition-transform duration-300"
-              >
-                <Image 
-                  src="/images/app-store.png" 
-                  alt="Download on the App Store" 
-                  width={150} 
-                  height={45} 
-                  className="object-contain"
-                />
-              </a>
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.rimapps.justlog"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:scale-105 transition-transform duration-300"
-              >
-                <Image 
-                  src="/images/google-play.png" 
-                  alt="Get it on Google Play" 
-                  width={150} 
-                  height={45} 
-                  className="object-contain"
-                />
-              </a>
+            <StoreButtons />
+            <div className="flex items-center gap-5 text-[15px] text-jl-muted">
+              <span className="flex items-center gap-1.5">
+                <span className="font-mono font-semibold text-jl-text">4.7</span>
+                <span className="tracking-[2px] text-jl-ink" aria-label="5 stars">★★★★★</span>
+              </span>
+              <span className="h-1 w-1 rounded-sm bg-jl-faint" />
+              <span>
+                <span className="font-mono font-semibold text-jl-text">10,000+</span> downloads
+              </span>
             </div>
           </div>
 
-          {/* Right Column — App Screenshot */}
-          <div className="flex-shrink-0 flex justify-center animate-slideInRight">
-            <Image 
-              src="/images/gymlogauthpage.png" 
-              alt="Just Log Auth Page"
-              width={300}
-              height={600}
-              className="rounded-xl shadow-2xl border border-gray-300 animate-float"
-            />
-          </div>
-
-        </div>
-      </section>
-
-      {/* Problem vs Solution Section */}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            {/* Problems - Left Side */}
-            <div className="animate-slideInLeft">
-              <h2 className="text-3xl font-bold mb-8 text-black">Tired of Fighting Your Fitness App?</h2>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">$9.99/month for features you never use</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">Social feeds cluttering your workout screen</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">Constant notifications during dinner</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">Complex interfaces that slow you down</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">AI coaches stating the obvious</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">Scrolling through endless screens to find your routine</p>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/cross.png" alt="Cross" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-lg text-gray-700">Loads of screens, clicks, and confusing navigation</p>
-                </div>
+          {/* Hero visual: a 580×720 stage scaled to fit */}
+          <div className="relative h-[410px] sm:h-[600px] lg:h-[504px] xl:h-[620px] min-[1400px]:h-[720px]">
+            <div className="absolute left-1/2 top-0 h-[720px] w-[580px] origin-top -translate-x-1/2 scale-[0.56] sm:scale-[0.83] lg:left-auto lg:right-0 lg:origin-top-right lg:translate-x-0 lg:scale-[0.7] xl:scale-[0.86] min-[1400px]:scale-100">
+              <div aria-hidden="true" className="jl-glow absolute left-1/2 top-1/2 -ml-[260px] -mt-[260px] h-[520px] w-[520px] rounded-full" />
+              <div className="absolute left-[30px] top-[60px] -rotate-6">
+                <Phone screen="main" width={297} priority />
               </div>
-            </div>
-
-            {/* Solutions - Right Side */}
-            <div className="animate-slideInRight">
-              <h2 className="text-3xl font-bold mb-8 text-[#c81d25]">An app that just logs workouts</h2>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">~1111 exercises with smart search</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">Custom routines and PR tracking</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">Time, weight, and distance logging</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">Custom workout counters</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">Color-coded workout calendar</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">No notifications, ever</span>
-                </div>
-                <div className="flex items-start">
-                  <Image src="/images/tick.png" alt="Tick" width={24} height={24} className="mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-lg text-gray-800">No unnecessary data collection</span>
-                </div>
+              <div className="absolute right-5 top-5">
+                <Phone screen="workout" width={320} priority />
+              </div>
+              <Image
+                src="/images/logan/logan-idle.webp"
+                alt="Logan the beaver waving"
+                width={270}
+                height={270}
+                priority
+                className="absolute -left-[70px] bottom-2.5 z-[3] h-[270px] w-[270px] object-contain"
+              />
+              <div className="absolute -left-[60px] bottom-[286px] z-[4] flex w-60 flex-col gap-[3px] rounded-[22px] bg-jl-s1 px-4 py-3.5 shadow-[0_12px_30px_rgba(17,17,19,0.12)]">
+                <span className="text-lg font-bold tracking-[-0.01em]">Hey, I’m Logan! 👋</span>
+                <span className="text-sm leading-[1.4] text-jl-muted">I help you log every workout with Justlog.</span>
+                <span aria-hidden="true" className="absolute -bottom-[7px] left-24 h-4 w-4 rotate-45 rounded-[3px] bg-jl-s1" />
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Screenshots Section */}
-      <section className="px-6 py-16 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fadeInUp">
-            <h2 className="text-4xl font-bold mb-8 text-black">See it in <span className="text-[#c81d25]">action</span></h2>
-          </div>
-          
-          {/* Features Screenshots - Proper Styling */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
-            <div className="text-center animate-fadeInUp">
-              <h3 className="font-semibold text-black mb-4">Home Screen</h3>
-              <Image 
-                src="/images/1.png" 
-                alt="Home Screen"
-                width={192}
-                height={384}
-                className="hover:scale-110 transition-transform duration-300"
-              />
-              <p className="text-xs text-gray-600 mt-4">Color coded weekly calendar history, Quick Actions, Clean design</p>
+        {/* As featured in */}
+        <section aria-label="As featured in" className={`${container} flex flex-col items-center gap-7 pt-10 lg:pb-10`}>
+          <span className={`${eyebrow} text-jl-muted`}>AS FEATURED IN</span>
+          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
+            <div className="flex h-[150px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
+              <ProductHuntBadge size="lg" />
+              <span className="text-sm text-jl-muted">Featured and won</span>
             </div>
-            <div className="text-center animate-fadeInUp animate-delay-200">
-              <h3 className="font-semibold text-black mb-4">Workout Logging</h3>
-              <Image 
-                src="/images/2.png" 
-                alt="Workout Logging"
-                width={192}
-                height={384}
-                className="hover:scale-110 transition-transform duration-300"
-              />
-              <p className="text-xs text-gray-600 mt-4">Sets, reps, weight entry, PR tracking</p>
-            </div>
-            <div className="text-center animate-fadeInUp animate-delay-400">
-              <h3 className="font-semibold text-black mb-4">Smart Search</h3>
-              <Image 
-                src="/images/3.png" 
-                alt="Smart Search"
-                width={192}
-                height={384}
-                className="hover:scale-110 transition-transform duration-300"
-              />
-              <p className="text-xs text-gray-600 mt-4">Finds bench press even if you type benchpress or bench-press</p>
-            </div>
-            <div className="text-center animate-fadeInUp animate-delay-600">
-              <h3 className="font-semibold text-black mb-4">Custom Counters</h3>
-              <Image 
-                src="/images/4.png" 
-                alt="Custom Counters"
-                width={192}
-                height={384}
-                className="hover:scale-110 transition-transform duration-300"
-              />
-              <p className="text-xs text-gray-600 mt-4">Daily tracking, Weekly/monthly totals</p>
-            </div>
-            <div className="text-center animate-fadeInUp animate-delay-800">
-              <h3 className="font-semibold text-black mb-4">History/Progress</h3>
-              <Image 
-                src="/images/5.png" 
-                alt="History Progress"
-                width={192}
-                height={384}
-                className="hover:scale-110 transition-transform duration-300"
-              />
-              <p className="text-xs text-gray-600 mt-4"> Color-coded calendar and past workouts</p>
-            </div>
-          </div>
-        </div>
-      </section>
-{/* Why Users Stick Section */}
-<section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-fadeInUp">
-            <h2 className="text-4xl font-bold mb-8 text-black">Why Users Actually <span className="text-[#c81d25]">Stick</span> With Just Log</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Image 
-                src="/images/stick1.png" 
-                alt="No overwhelming features"
-                width={120}
-                height={120}
-                className="mx-auto mb-8"
-              />
-              <p className="text-xl font-semibold text-gray-800">No overwhelming features to ignore</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Image 
-                src="/images/stick2.png" 
-                alt="Workouts logged in seconds"
-                width={120}
-                height={120}
-                className="mx-auto mb-8"
-              />
-              <p className="text-xl font-semibold text-gray-800">Workouts logged in seconds</p>
-            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Image 
-                src="/images/stick3.png" 
-                alt="See what you did, choose what's next"
-                width={120}
-                height={120}
-                className="mx-auto mb-8"
-              />
-<p className="text-xl font-semibold text-gray-800">See what you did, choose what&apos;s next quickly - that simple</p>            </div>
-            
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 text-center hover:shadow-xl hover:scale-105 transition-all duration-300">
-              <Image 
-                src="/images/stick4.png" 
-                alt="Zero notifications means zero guilt"
-                width={120}
-                height={120}
-                className="mx-auto mb-8"
-              />
-              <p className="text-xl font-semibold text-gray-800">Zero notifications means zero guilt</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-black">What <span className="text-[#c81d25]">Early Users</span> Say</h2>
-          <div className="relative flex items-center justify-center">
-            {/* Left Arrow */}
-            <button 
-              onClick={prevTestimonial}
-              className="absolute left-0 z-10 p-3 bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+            <a
+              href={UNEED_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-[150px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1 transition-transform hover:-translate-y-0.5"
             >
-              <svg className="w-6 h-6 text-[#c81d25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            {/* Infinite Testimonials Carousel */}
-            <div className="overflow-hidden w-full max-w-5xl mx-auto">
-              <div 
-                className="flex gap-8 transition-transform duration-500 ease-in-out"
-                style={{
-                  transform: mounted 
-                    ? `translateX(calc(50% - ${(testimonialIndex + testimonials.length) * 320}px - 160px))`
-                    : 'translateX(0)'
-                }}
-              >
-                {/* Triple the testimonials for infinite effect */}
-                {[...testimonials, ...testimonials, ...testimonials].map((testimonial, globalIndex) => {
-                  const centerIndex = testimonialIndex + testimonials.length;
-                  const isCenter = globalIndex === centerIndex;
-                  const isAdjacent = Math.abs(globalIndex - centerIndex) === 1;
-                  
-                  return (
-                    <blockquote 
-                      key={globalIndex}
-                      className={`flex-shrink-0 w-72 h-48 flex flex-col justify-center rounded-lg transition-all duration-500 ease-in-out ${
-                        isCenter 
-                          ? 'bg-[#FAF9F5] transform scale-110 shadow-lg z-10 p-8' 
-                          : isAdjacent 
-                            ? 'bg-[#FAF9F5] border border-gray-200 opacity-60 transform scale-90 p-6 shadow-sm'
-                            : 'bg-[#FAF9F5] border border-gray-200 opacity-20 transform scale-75 p-6'
-                      }`}
-                    >
-                      <p className={`italic text-gray-800 text-center transition-all duration-500 ${
-                        isCenter ? 'text-lg font-semibold' : 'text-sm'
-                      }`}>
-                        &quot;{testimonial}&quot;
-                      </p>
-                    </blockquote>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <button 
-              onClick={nextTestimonial}
-              className="absolute right-0 z-10 p-3 bg-white rounded-full shadow-lg border border-gray-200 hover:bg-gray-50 transition-colors"
-            >
-              <svg className="w-6 h-6 text-[#c81d25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-        </div>
-      </section>
-
-      {/* Featured In Section */}
-      <section className="px-6 py-16 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 text-black">As <span className="text-[#c81d25]">Featured In</span></h2>
-          <p className="text-lg text-gray-600 mb-12">We&apos;re proud to be getting featured in:</p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-            {/* Product Hunt */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm p-2">
-                <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-                  <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1010137&theme=light&t=1756634766125" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '120px', height: '26px'}} width="120" height="26" />
-                </a>
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Product Hunt<br/>(Featured and won)</p>
-            </div>
-
-            {/* Uneed */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm p-2">
-                <a href="https://www.uneed.best/best-products-by-tag/tracking" className="w-full h-full" target="_blank" rel="noopener noreferrer">
-                  <Image src="/images/og.png" alt="Uneed" width={80} height={80} className="object-contain w-full h-full" />
-                </a>
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Uneed<br/>(Featured in &quot;top tracking apps of the year&quot;)</p>
-            </div>
-
-            {/* IndieHackers */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/indiehackers.jpg" alt="IndieHackers" width={64} height={64} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">IndieHackers<br/>(indie vibes)</p>
-            </div>
-
-            {/* HackerNews */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/hackernews.png" alt="HackerNews" width={64} height={64} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">Hacker News<br/>(featured on show section)</p>
-            </div>
-
-            {/* TechCrunch */}
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-24 h-24 bg-white rounded-lg border border-gray-200 flex items-center justify-center shadow-sm">
-                <Image src="/images/techcrunch.png" alt="TechCrunch" width={64} height={32} className="object-contain" />
-              </div>
-              <p className="text-sm text-gray-600 font-medium">TechCrunch<br/>(hopefully oneday)</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Price Evolution Graph Section */}
-      <section className="px-6 py-16 bg-[#FAF9F5]">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4 text-black">How Fitness Apps Got <span className="text-[#c81d25]">Bloated</span></h2>
-          <p className="text-xl text-center mb-6 text-gray-700">While others added social feeds, AI coaches, and clutter, we kept workouts simple</p>
-          <p className="text-lg text-center mb-12 text-gray-600">Every year apps get more complex. We chose to go the opposite direction.</p>
-          
-          {/* Graph Container */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-8 mb-8">
-            <div className="relative h-96">
-              {/* Y-axis labels */}
-              <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-sm text-gray-600">
-                <span>Bloated</span>
-                <span>Complex</span>
-                <span>Features+</span>
-                <span>Growing</span>
-                <span>Adding</span>
-                <span>Basic</span>
-                <span>Simple</span>
-              </div>
-              
-              {/* Graph area */}
-              <div className="ml-12 mr-4 h-full relative">
-                {/* Grid lines */}
-                <div className="absolute inset-0">
-                  <div className="h-full flex flex-col justify-between">
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-200"></div>
-                    <div className="border-t border-gray-300"></div>
-                  </div>
-                </div>
-                
-                {/* Line graph */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300">
-                  {/* Main trend line */}
-                  <polyline
-                    fill="none"
-                    stroke="#6b7280"
-                    strokeWidth="3"
-                    points="20,225 120,150 220,112.5 320,62.5"
-                  />
-                  
-                  {/* Just Log point */}
-                  <circle cx="380" cy="258" r="8" fill="#c81d25" stroke="white" strokeWidth="3"/>                  
-                  {/* Data points */}
-                  <circle cx="20" cy="225" r="6" fill="#6b7280"/>
-                  <circle cx="120" cy="150" r="6" fill="#6b7280"/>
-                  <circle cx="220" cy="112.5" r="6" fill="#6b7280"/>
-                  <circle cx="320" cy="62.5" r="6" fill="#6b7280"/>
+              <span className="flex h-[62px] items-center text-[40px] font-black tracking-[0.02em] text-[#1C1C1C]" style={{ fontFamily: "Arial, sans-serif" }}>
+                UNEED<span className="-mt-[22px] ml-0.5 text-2xl text-[#F5A623]">✦</span>
+              </span>
+              <span className="text-sm text-jl-muted">Top tracking apps of the year</span>
+            </a>
+            <div className="flex h-[150px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
+              <span className="flex h-[62px] items-center gap-2.5">
+                <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24">
+                  <path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z" fill="#FF6600" />
                 </svg>
-                
-                {/* Data point labels */}
-                <div className="absolute" style={{left: '5%', bottom: '25%'}}>
-                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">Simple</div>
-                    <div className="text-xs text-gray-600">Basic logging</div>
-                  </div>
-                </div>
-                
-                <div className="absolute" style={{left: '30%', bottom: '50%'}}>
-                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">+ Social</div>
-                    <div className="text-xs text-gray-600">Feeds & sharing</div>
-                  </div>
-                </div>
-                
-                <div className="absolute" style={{left: '55%', bottom: '62.5%'}}>
-                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">+ AI coaches</div>
-                    <div className="text-xs text-gray-600">Smart suggestions</div>
-                  </div>
-                </div>
-                
-                <div className="absolute" style={{left: '80%', bottom: '75%'}}>
-                  <div className="bg-white border border-gray-300 rounded-lg p-3 shadow-sm text-center">
-                    <div className="font-bold text-gray-800">+ Everything</div>
-                    <div className="text-xs text-gray-600">Kitchen sink apps</div>
-                  </div>
-                </div>
-                
-                {/* Just Log highlight */}
-                <div className="absolute" style={{right: '5%', bottom: '14%'}}>
-                  <div className="bg-[#c81d25] text-white rounded-lg p-4 shadow-lg text-center border-2 border-white">
-                    <div className="flex items-center justify-center gap-1 mb-1">
-                      <span className="text-lg font-bold">Back to basics</span>
-                    </div>
-                    <div className="text-sm font-semibold">Just Log</div>
-                    <div className="text-xs opacity-90">Simple workouts</div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* X-axis labels */}
-              <div className="absolute bottom-0 left-12 right-4 flex justify-between text-sm text-gray-600 mt-4">
-                <span>2017</span>
-                <span>2019</span>
-                <span>2022</span>
-                <span>2025</span>
-                <span className="text-[#c81d25] font-bold">Now</span>
-              </div>
+                <span className="text-[22px] font-bold leading-none text-[#FF6600]" style={{ fontFamily: "Verdana, Geneva, sans-serif" }}>
+                  Hacker
+                  <br />
+                  News
+                </span>
+              </span>
+              <span className="text-sm text-jl-muted">Show HN</span>
+            </div>
+            <div className="flex h-[150px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
+              <span className="flex h-[62px] items-center gap-2.5">
+                <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24">
+                  <path d="M0 0h24v24H0V0Zm5.4 17.2h2.4V6.8H5.4v10.4Zm4.8 0h2.4v-4h3.6v4h2.4V6.8h-2.4v4h-3.6v-4h-2.4v10.4Z" fill="#0E2150" />
+                </svg>
+                <span className="text-[22px] font-bold leading-none text-[#0E2150]" style={{ fontFamily: "Arial, sans-serif" }}>
+                  Indie
+                  <br />
+                  Hackers
+                </span>
+              </span>
+              <span className="text-sm text-jl-muted">Built in public</span>
             </div>
           </div>
-          
-        {/* Bottom summary */}
-        
-        </div>
-      </section>
+        </section>
 
-      {/* FAQ Section */}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 text-black animate-fadeInUp">Common <span className="text-[#c81d25]">Questions</span></h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-[#FAF9F5] rounded-lg shadow-sm overflow-hidden border border-gray-200 hover:shadow-md transition-shadow duration-300">
-                <button
-                  onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                >
-                  <h3 className="text-xl font-bold text-black">{faq.question}</h3>
-                  <svg
-                    className={`w-6 h-6 transition-transform duration-200 text-[#c81d25] ${
-                      expandedFaq === index ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    expandedFaq === index 
-                      ? 'max-h-32 opacity-100' 
-                      : 'max-h-0 opacity-0'
-                  } overflow-hidden`}
-                >
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-700">{faq.answer}</p>
-                  </div>
+        {/* Why */}
+        <section id="why" className={`${container} flex scroll-mt-6 flex-col gap-12 pt-24 lg:pt-[110px]`}>
+          <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end lg:gap-10">
+            <h2 className={`${h2} max-w-[640px]`}>Fitness apps got bloated. We went the other way.</h2>
+            <p className="m-0 max-w-[380px] text-lg leading-normal text-jl-muted">
+              Every year apps add feeds, coaches and clutter. We kept the one thing that makes you stronger: the log.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="flex flex-col gap-[22px] rounded-[28px] bg-jl-s1 p-7 sm:p-9 md:min-h-[400px]">
+              <div className="flex items-center justify-between">
+                <span className="text-[15px] font-semibold text-jl-muted">Other apps</span>
+                <svg role="img" aria-label="Chart: other apps keep adding features over time" width="180" height="44" viewBox="0 0 180 44">
+                  <path d="M4 40 L50 34 L90 22 L130 14 L176 4" fill="none" stroke="#A1A1AA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <circle cx="176" cy="4" r="3.5" fill="#A1A1AA" />
+                </svg>
+              </div>
+              <ul className="m-0 flex list-none flex-col gap-[18px] p-0">
+                {otherApps.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[17px] text-jl-muted">
+                    <Cross />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="flex flex-col gap-[22px] rounded-[28px] border-[1.5px] border-jl-ink bg-jl-soft p-7 sm:p-9 md:min-h-[400px]">
+              <div className="flex items-center gap-2.5">
+                <Logo size={26} radius={6} />
+                <span className="text-[15px] font-semibold">Justlog</span>
+              </div>
+              <ul className="m-0 flex list-none flex-col gap-4 p-0">
+                {justlogPerks.map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[17px]">
+                    <Check />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Features */}
+        <section id="features" className={`${container} flex scroll-mt-6 flex-col gap-12 pt-24 lg:pt-[110px]`}>
+          <div className="flex flex-col items-center gap-3.5 text-center">
+            <span className={`${eyebrow} text-jl-ink`}>FEATURES</span>
+            <h2 className={h2}>
+              Everything you need at the gym.
+              <br className="hidden sm:block" /> Nothing you don’t.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((f) => (
+              <div key={f.title} className="relative box-border h-[500px] overflow-hidden rounded-[28px] bg-jl-s1 px-6 pt-[26px]">
+                <h3 className="m-0 text-xl font-semibold tracking-[-0.02em]">{f.title}</h3>
+                <p className="mb-0 mt-2 text-sm leading-[1.45] text-jl-muted">{f.body}</p>
+                <div className="absolute inset-x-0 bottom-0 flex h-[320px] justify-center overflow-hidden">
+                  <Phone screen={f.screen} width={234} radius={40} style={{ marginTop: f.offset }} />
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Final CTA */}
-      <section className="px-6 py-16 bg-black text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8">Ready to <span className="text-[#c81d25]">simplify</span> your workouts?</h2>
-          <p className="text-xl mb-8 text-gray-300">Join thousands who&apos;ve ditched the bloated fitness apps</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="https://apps.apple.com/us/app/workout-tracking-justlog/id6749898793"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 transition-transform duration-300 flex justify-center"
-            >
-              <Image 
-                src="/images/app-store.png" 
-                alt="Download on the App Store" 
-                width={150} 
-                height={45} 
-                className="object-contain"
-              />
-            </a>
-            <a 
-              href="https://play.google.com/store/apps/details?id=com.rimapps.justlog"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:scale-105 transition-transform duration-300 flex justify-center"
-            >
-              <Image 
-                src="/images/google-play.png" 
-                alt="Get it on Google Play" 
-                width={150} 
-                height={45} 
-                className="object-contain"
-              />
-            </a>
+        {/* Tabata */}
+        <section
+          id="tabata"
+          className={`${container} grid scroll-mt-6 items-start gap-10 pt-24 lg:grid-cols-2 lg:pt-[110px]`}
+        >
+          <div className="flex flex-col gap-6 lg:pt-10">
+            <span className="flex h-[30px] items-center self-start rounded-[15px] bg-jl-soft px-3 text-[13px] font-semibold tracking-[0.08em] text-jl-ink">
+              NEW · TABATA
+            </span>
+            <h2 className={h2}>
+              Morning cardio.
+              <br />
+              Evening lifts.
+            </h2>
+            <p className="m-0 max-w-[480px] text-[19px] leading-normal text-jl-muted">
+              Jump rope at 7, bench at 7. Tabata lives in its own space, with its own timers and history, so your lifting
+              log stays clean.
+            </p>
+            <ul className="m-0 mt-2 flex list-none flex-col gap-[18px] p-0">
+              {tabataPoints.map((p) => (
+                <li key={p.title} className="flex items-start gap-3.5">
+                  <span className="mt-px">
+                    <Check size={28} />
+                  </span>
+                  <span className="flex flex-col gap-0.5">
+                    <span className="text-lg font-semibold">{p.title}</span>
+                    <span className="text-[15px] leading-[1.45] text-jl-muted">{p.body}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      </section>
+          {/* Tabata visual: a 600×640 stage scaled to fit */}
+          <div className="relative h-[360px] sm:h-[540px] lg:h-[500px] xl:h-[550px] min-[1400px]:h-[640px]">
+            <div className="absolute left-1/2 top-0 h-[640px] w-[600px] origin-top -translate-x-1/2 scale-[0.56] sm:scale-[0.84] lg:scale-[0.78] xl:scale-[0.86] min-[1400px]:scale-100">
+              <div aria-hidden="true" className="jl-glow absolute left-1/2 top-1/2 -ml-[260px] -mt-[260px] h-[520px] w-[520px] rounded-full" />
+              <div className="absolute left-[300px] top-0 z-[1] rotate-[5deg]">
+                <Phone screen="tabata-done" width={297} />
+              </div>
+              <div className="absolute left-10 top-5 z-[2] -rotate-[5deg]">
+                <Phone screen="tabata-run" width={297} />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Widgets */}
+        <section id="widgets" className={`${container} flex scroll-mt-6 flex-col items-center gap-11 pt-24 lg:pt-[110px]`}>
+          <div className="flex flex-col items-center gap-3.5 text-center">
+            <span className={`${eyebrow} text-jl-ink`}>WIDGETS</span>
+            <h2 className={h2}>Your week, on your home screen.</h2>
+            <p className="m-0 max-w-[620px] text-[19px] leading-normal text-jl-muted">
+              Check your weekly goal, start your next workout, tap +1 on a counter or kick off a Tabata, without opening
+              the app.
+            </p>
+          </div>
+          <WidgetShowcase />
+        </section>
+
+        {/* Switching from another app */}
+        <section
+          id="switch"
+          className={`${container} grid scroll-mt-6 items-center gap-14 pt-24 lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-20 lg:pt-[110px] xl:grid-cols-[minmax(0,1fr)_520px]`}
+        >
+          <div className="flex flex-col gap-[18px]">
+            <span className={`${eyebrow} text-jl-ink`}>SWITCHING?</span>
+            <h2 className={h2}>Coming from another app? We’ve got you.</h2>
+            <p className="m-0 max-w-[520px] text-[19px] leading-normal text-jl-muted">
+              Paste your routine from anywhere, or import a CSV export. Messy is fine. Logan turns it into exercises, sets
+              and reps, and keeps your names as you wrote them.
+            </p>
+            <div className="mt-2.5 grid max-w-[560px] gap-3 sm:grid-cols-2">
+              {importSources.map((src) => (
+                <div key={src.title} className="flex items-center gap-3.5 rounded-[20px] bg-jl-s1 px-[18px] py-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-jl-s2">
+                    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d={src.icon} />
+                    </svg>
+                  </span>
+                  <span className="flex flex-col">
+                    <span className="text-base font-semibold">{src.title}</span>
+                    <span className="text-sm text-jl-muted">{src.sub}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative flex flex-col gap-[18px]">
+            <div
+              aria-label="Example of a messy pasted workout"
+              className="-rotate-2 rounded-[28px] bg-jl-s1 px-6 py-[26px] font-mono text-base leading-[1.65] text-jl-muted shadow-[0_20px_50px_rgba(0,0,0,0.08)] sm:px-[30px] sm:text-[19px]"
+            >
+              push day tmrw!!
+              <br />
+              bench 4x8 (80kg last wk)
+              <br />
+              incline db press 3 sets of 10
+              <br />
+              cable flys 3x12
+              <br />
+              lat raises till failure
+            </div>
+            <div aria-hidden="true" className="flex justify-center text-jl-ink">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 5v14M6 13l6 6 6-6" />
+              </svg>
+            </div>
+            <div className="flex flex-col gap-3 rounded-[28px] bg-jl-s1 px-[18px] pb-2.5 pt-[18px] shadow-[0_24px_60px_rgba(17,17,19,0.12)]">
+              <div className="flex items-center gap-3.5">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#4D4DFF] text-white">
+                  <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+                    <path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11" />
+                  </svg>
+                </span>
+                <span className="flex flex-1 flex-col gap-0.5">
+                  <span className="text-xl font-semibold tracking-[-0.02em]">Push day</span>
+                  <span className="text-[13px] text-jl-muted">4 exercises · 13 sets</span>
+                </span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-jl-accent text-jl-onaccent">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24">
+                    <path d="M8 5.2v13.6L19 12z" fill="currentColor" />
+                  </svg>
+                </span>
+              </div>
+              <div className="flex flex-col">
+                {importedExercises.map((ex, i) => (
+                  <div key={ex.name} className={`flex items-center gap-3 px-1 py-2.5 ${i > 0 ? "border-t border-jl-line" : ""}`}>
+                    <span className="w-6 font-mono text-[13px] font-medium text-jl-muted">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="flex min-w-0 flex-1 flex-col gap-px">
+                      <span className="text-base font-semibold">{ex.name}</span>
+                      <span className={`text-[13px] ${ex.isNew ? "text-jl-ink" : "text-jl-muted"}`}>{ex.sub}</span>
+                    </span>
+                    <span className="flex h-8 min-w-[58px] items-center justify-center rounded-xl bg-jl-s2 px-2.5 font-mono text-sm font-medium">
+                      {ex.sets}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <Image
+              src="/images/logan/logan-welcome-back.webp"
+              alt=""
+              width={140}
+              height={140}
+              className="absolute -right-2 -top-[70px] h-[100px] w-[100px] object-contain sm:-right-[50px] sm:h-[140px] sm:w-[140px]"
+            />
+          </div>
+        </section>
+
+        {/* Share */}
+        <section
+          id="share"
+          className={`${container} grid scroll-mt-6 items-center gap-12 pt-24 lg:grid-cols-[442px_minmax(0,1fr)] lg:gap-16 lg:pt-[110px] min-[1400px]:grid-cols-[520px_minmax(0,1fr)] min-[1400px]:gap-[90px]`}
+        >
+          {/* 520×660 stage scaled to fit */}
+          <div className="relative order-2 h-[400px] sm:h-[594px] lg:order-1 lg:h-[561px] min-[1400px]:h-[660px]">
+            <div className="absolute left-1/2 top-0 origin-top -translate-x-1/2 scale-[0.6] sm:scale-90 lg:left-0 lg:origin-top-left lg:translate-x-0 lg:scale-[0.85] min-[1400px]:scale-100">
+              <ShareStoryMockup />
+            </div>
+          </div>
+          <div className="order-1 flex flex-col gap-[18px] lg:order-2">
+            <span className={`${eyebrow} text-jl-ink`}>SHARE</span>
+            <h2 className={h2}>Turn your stats into a story worth posting.</h2>
+            <p className="m-0 max-w-[520px] text-[19px] leading-normal text-jl-muted">
+              Finish a workout and get a cool, story-ready image in one tap. Your gym photo, your numbers, your PRs. Or a
+              see-through version to drop on any photo or video.
+            </p>
+            <div className="mt-1.5 flex flex-wrap gap-2">
+              {shareStyles.map((style, i) => (
+                <span
+                  key={style}
+                  className={`flex h-[38px] items-center rounded-[19px] px-4 text-[15px] font-semibold ${
+                    i === 0 ? "bg-jl-text text-jl-bg" : "bg-jl-s1"
+                  }`}
+                >
+                  {style}
+                </span>
+              ))}
+            </div>
+            <div className="mt-1 flex flex-col gap-2.5">
+              <span className="text-sm font-semibold text-jl-muted">Post straight to</span>
+              <div className="flex flex-wrap gap-2.5">
+                {shareTargets.map((t) => (
+                  <span key={t.name} className="flex h-11 items-center gap-[9px] rounded-[22px] bg-jl-s1 pl-3 pr-4 text-[15px] font-semibold">
+                    <span className="flex h-[26px] w-[26px] items-center justify-center rounded-lg bg-jl-text text-jl-bg">
+                      <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d={t.icon} />
+                      </svg>
+                    </span>
+                    {t.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How to */}
+        <section
+          id="howto"
+          className={`${container} grid scroll-mt-6 items-center gap-12 pt-24 lg:grid-cols-[minmax(0,1fr)_476px] lg:gap-16 lg:pt-[110px] min-[1400px]:grid-cols-[minmax(0,1fr)_560px] min-[1400px]:gap-20`}
+        >
+          <div className="flex flex-col gap-[18px]">
+            <span className={`${eyebrow} text-jl-ink`}>HOW TO</span>
+            <h2 className={h2}>Not sure how to do it? Watch it in one tap.</h2>
+            <p className="m-0 max-w-[520px] text-[19px] leading-normal text-jl-muted">
+              Every exercise has a Watch now button. It opens a short form video on YouTube, so you&apos;re not typing exercise
+              names into search between sets.
+            </p>
+          </div>
+          {/* 560×540 stage scaled to fit */}
+          <div className="relative h-[324px] sm:h-[513px] lg:h-[459px] min-[1400px]:h-[540px]">
+            <div className="absolute left-1/2 top-0 origin-top -translate-x-1/2 scale-[0.6] sm:scale-95 lg:left-auto lg:right-0 lg:origin-top-right lg:translate-x-0 lg:scale-[0.85] min-[1400px]:scale-100">
+              <TutorialMockup />
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className={`${container} flex flex-col gap-11 pt-24 lg:pt-[100px]`}>
+          <h2 className={`${h2} text-center`}>Lifters notice the difference.</h2>
+          <div className="grid items-center gap-6 md:grid-cols-3">
+            {testimonials.map((t) => (
+              <figure
+                key={t.quote}
+                className={`m-0 box-border flex flex-col gap-5 rounded-[28px] p-8 md:min-h-[280px] ${
+                  t.highlight ? "bg-jl-accent text-jl-onaccent" : "bg-jl-s1 text-jl-text"
+                }`}
+              >
+                <span
+                  aria-hidden="true"
+                  className={`h-6 text-[56px] font-bold leading-[0.6] ${t.highlight ? "text-jl-onaccent" : "text-jl-ink"}`}
+                >
+                  “
+                </span>
+                <blockquote
+                  className={`m-0 flex-1 leading-[1.4] tracking-[-0.01em] ${
+                    t.highlight ? "text-2xl font-semibold" : "text-[19px] font-medium"
+                  }`}
+                >
+                  {t.quote}
+                </blockquote>
+                <figcaption className={`text-sm ${t.highlight ? "text-[rgba(11,11,12,0.65)]" : "text-jl-muted"}`}>
+                  Long term user
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        {/* Meet Logan */}
+        <section
+          id="logan"
+          className={`${container} grid scroll-mt-6 items-center gap-10 pt-24 lg:grid-cols-[420px_minmax(0,1fr)] lg:gap-[60px] lg:pt-[90px]`}
+        >
+          <div className="flex flex-col gap-4">
+            <span className={`${eyebrow} text-jl-ink`}>MEET LOGAN</span>
+            <h2 className={h2}>Your gym buddy who never forgets a set.</h2>
+            <p className="m-0 text-lg leading-normal text-jl-muted">
+              Logan remembers last time, cheers your PRs and tells you how each lift went. No feeds, no pep talks. Just a
+              beaver who logs.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-3 sm:gap-5">
+            {moods.map((m) => (
+              <div key={m.img} className="flex flex-col items-center gap-1.5 rounded-[28px] bg-jl-s1 px-3 pb-5 pt-[18px]">
+                <Image
+                  src={`/images/logan/${m.img}.webp`}
+                  alt={m.alt}
+                  width={190}
+                  height={190}
+                  className="aspect-square h-auto w-full max-w-[190px] object-contain"
+                />
+                <span className="text-center text-sm font-semibold sm:text-base">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section
+          id="faq"
+          className={`${container} grid scroll-mt-6 gap-10 pt-24 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20 lg:pt-[110px]`}
+        >
+          <div className="flex flex-col gap-4">
+            <h2 className={h2}>Questions, answered.</h2>
+            <p className="m-0 text-[17px] leading-normal text-jl-muted">
+              Something else?{" "}
+              <a href={CONTACT_URL} className="font-semibold text-jl-ink underline">
+                Contact us
+              </a>
+            </p>
+          </div>
+          <div className="grid content-start gap-x-12 md:grid-cols-2">
+            {faqs.map((f) => (
+              <div key={f.q} className="flex flex-col gap-2 border-t border-jl-line py-[26px]">
+                <h3 className="m-0 text-[19px] font-semibold tracking-[-0.01em]">{f.q}</h3>
+                <p className="m-0 text-base leading-normal text-jl-muted">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section id="download" className={`${container} scroll-mt-6 pt-20 lg:pt-28`}>
+          <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-[40px] bg-jl-frame px-6 pt-12 text-[#F4F4F5] sm:px-12 md:flex-row md:px-20 md:py-0 lg:h-[440px]">
+            <div className="relative flex flex-col gap-[22px] md:py-16">
+              <h2 className="m-0 text-[52px] font-bold leading-[0.98] tracking-[-0.05em] sm:text-[72px]">
+                Ready to
+                <br />
+                <span className="text-jl-accent">just log?</span>
+              </h2>
+              <p className="m-0 text-[19px] text-[#A1A1AA]">Join 10,000+ lifters who ditched the bloated apps.</p>
+              <StoreButtons />
+            </div>
+            <Image
+              src="/images/logan/logan-crushed-it.webp"
+              alt="Logan cheering"
+              width={320}
+              height={320}
+              className="relative h-auto w-[240px] object-contain sm:w-[320px]"
+            />
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
-      <footer className="px-6 py-8 bg-[#FAF9F5] border-t border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Image src="/images/justloglogo.png" alt="Just Log Logo" width={24} height={24} />
-                <div className="text-xl font-semibold text-black">Just Log</div>
-              </div>
-              <p className="text-gray-600 mb-4">The anti-thesis of complicated fitness apps</p>
-              <a href="https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just&#0045;log&#0045;2" target="_blank">
-                <img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=1010137&theme=dark&period=daily&t=1756632660193" alt="Just&#0032;Log - No&#0032;fluff&#0032;workout&#0032;tracker | Product Hunt" style={{width: '250px', height: '54px'}} width="250" height="54" />
-              </a>
-              {/* Uneed badge removed from footer as requested */}
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-black">Legal</h4>
-              <div className="space-y-2 text-gray-600">
-                <Link 
-                  href="/privacy"
-                  className="block hover:text-[#c81d25] transition-colors"
-                >
-                  Privacy Policy
-                </Link>
-                <Link 
-                  href="/terms"
-                  className="block hover:text-[#c81d25] transition-colors"
-                >
-                  Terms of Service
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4 text-black">Contact</h4>
-              <div className="space-y-3">
-                <button 
-                  onClick={() => window.open('https://tally.so/r/wzoGEE', '_blank')}
-                  className="border-2 border-[#c81d25] bg-white text-[#c81d25] px-6 py-2 rounded hover:bg-gray-50 transition-colors w-full"
-                >
-                  Contact Us
-                </button>
-                <button 
-                  onClick={() => window.open('https://tally.so/r/w4y9ao', '_blank')}
-                  className="border-2 border-[#c81d25] bg-[#c81d25] text-white px-6 py-2 rounded hover:bg-[#d80032] transition-colors w-full"
-                >
-                  Send Feedback
-                </button>
-                <div className="flex items-center justify-center gap-2 text-gray-600">
-                  <button 
-                    onClick={() => window.open('https://instagram.com/justlogapp', '_blank')}
-                    className="flex items-center gap-2 hover:text-[#c81d25] transition-colors"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.40z"/>
-                    </svg>
-                    @justlogapp
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+      <footer className={`${container} flex flex-col gap-8 py-16 text-[15px] md:flex-row md:items-center md:gap-10 lg:py-24`}>
+        <div className="flex items-center gap-3">
+          <Logo size={30} radius={7} />
+          <span className="flex flex-col">
+            <span className="text-[17px] font-semibold">Justlog</span>
+            <span className="text-sm text-jl-muted">The opposite of a complicated fitness app.</span>
+          </span>
         </div>
+        <nav aria-label="Footer" className="flex flex-1 flex-wrap gap-x-7 gap-y-3 md:justify-end">
+          <Link href="/privacy" className="text-jl-muted transition-colors hover:text-jl-text">Privacy</Link>
+          <Link href="/terms" className="text-jl-muted transition-colors hover:text-jl-text">Terms</Link>
+          <a href={CONTACT_URL} className="text-jl-muted transition-colors hover:text-jl-text">
+            Contact
+          </a>
+          <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="text-jl-muted transition-colors hover:text-jl-text">
+            Send feedback
+          </a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-jl-text">
+            @justlogapp
+          </a>
+        </nav>
       </footer>
     </div>
   );
