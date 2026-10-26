@@ -95,7 +95,7 @@ const faqs = [
 function Logo({ size = 36, radius = 8 }: { size?: number; radius?: number }) {
   return (
     <Image
-      src="/images/logan/icon-final.png"
+      src="/images/logan/icon-96.webp"
       alt="Justlog app icon"
       width={size}
       height={size}

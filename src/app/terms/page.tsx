@@ -20,7 +20,7 @@ export default function TermsOfService() {
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/images/logan/icon-final.png" alt="Justlog logo" width={32} height={32} className="rounded-[7px]" />
+            <Image src="/images/logan/icon-96.webp" alt="Justlog logo" width={32} height={32} className="rounded-[7px]" />
             <div className="text-xl font-semibold">Justlog</div>
           </Link>
           <Link

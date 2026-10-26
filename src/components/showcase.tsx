@@ -125,7 +125,7 @@ export function ShareStoryMockup() {
               ))}
             </span>
             <span className="flex items-center gap-2 text-sm font-semibold">
-              <Image src="/images/logan/icon-final.png" alt="Justlog app icon" width={24} height={24} className="rounded-md" />
+              <Image src="/images/logan/icon-96.webp" alt="Justlog app icon" width={24} height={24} className="rounded-md" />
               justlog.app
             </span>
           </div>
