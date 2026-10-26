@@ -17,6 +17,8 @@ type Scene = {
   title: string;
   body: string;
   screen: string;
+  /** Describes the screenshot for screen readers and image search. */
+  alt: string;
   tone: Tone;
   logan: string;
   stickers: Sticker[];
@@ -26,8 +28,9 @@ const scenes: Scene[] = [
   {
     label: "LAST & BEST",
     title: "Know the number to beat.",
-    body: "Last time and your best sit right beside the set you’re logging. No scrolling back through history.",
+    body: "Your last and best weight and reps sit right beside the set you’re logging. No scrolling back through workout history.",
     screen: "workout",
+    alt: "Justlog active workout screen with last and best weights next to each set",
     tone: "lime",
     logan: "logan-solid",
     stickers: [
@@ -40,6 +43,7 @@ const scenes: Scene[] = [
     title: "Type it however. We’ll find it.",
     body: "benchpress, bench-press or bench press. 1,100+ exercises and a search that ignores spaces and hyphens.",
     screen: "picker",
+    alt: "Justlog exercise search finding Barbell Hip Thrust and Romanian Deadlift",
     tone: "ink",
     logan: "logan-waiting",
     stickers: [
@@ -51,8 +55,9 @@ const scenes: Scene[] = [
   {
     label: "CALENDAR",
     title: "Your month, in colour.",
-    body: "Every workout coloured by routine. Skipped leg day? You’ll see it.",
+    body: "A workout calendar with every session coloured by routine. Skipped leg day? You’ll see it.",
     screen: "history",
+    alt: "Justlog workout calendar with each day coloured by routine",
     tone: "pale",
     logan: "logan-welcome-back",
     stickers: [
@@ -64,8 +69,9 @@ const scenes: Scene[] = [
   {
     label: "LOCK SCREEN",
     title: "Phone stays locked. Sets still get logged.",
-    body: "Tick off sets and watch your rest timer from the lock screen. No unlocking with chalky hands.",
+    body: "Tick off sets and watch your rest timer right on the lock screen. No unlocking with chalky hands.",
     screen: "notification",
+    alt: "Justlog rest timer and set controls on the iPhone lock screen",
     tone: "olive",
     logan: "logan-resting",
     stickers: [
@@ -76,8 +82,9 @@ const scenes: Scene[] = [
   {
     label: "HOW IT FELT",
     title: "Meh, Solid or Crushed it.",
-    body: "One tap after each lift. Next time, you’ll know whether 80 kg felt easy or awful.",
+    body: "Rate each workout in one tap. Next time, you’ll know whether 80 kg felt easy or awful.",
     screen: "finish",
+    alt: "Justlog workout summary asking how the workout felt: Meh, Solid or Crushed it",
     tone: "lime",
     logan: "logan-crushed-it",
     stickers: [
@@ -89,8 +96,9 @@ const scenes: Scene[] = [
   {
     label: "COUNTERS",
     title: "For the push-ups between meetings.",
-    body: "Tap +1 whenever. See today, this week and all time.",
+    body: "A rep counter for push-ups, pull-ups or anything else. Tap +1 whenever and see today, this week and all time.",
     screen: "counter-stats",
+    alt: "Justlog pull-up counter showing today, this week and all-time totals",
     tone: "ink",
     logan: "logan-oops",
     stickers: [
@@ -101,8 +109,9 @@ const scenes: Scene[] = [
   {
     label: "TIMED SETS",
     title: "Planks deserve a big clock.",
-    body: "Holds and carries go full screen. Pause, add ten seconds, done.",
+    body: "A full-screen plank timer for holds and carries. Pause, add ten seconds, done.",
     screen: "timer",
+    alt: "Justlog full-screen timer for a hollow body hold",
     tone: "pale",
     logan: "logan-waiting",
     stickers: [
@@ -113,8 +122,9 @@ const scenes: Scene[] = [
   {
     label: "PERSONAL RECORDS",
     title: "PRs announce themselves.",
-    body: "Beat your best and Logan tells you mid-workout. No digging through charts later.",
+    body: "Beat a personal record and Logan tells you mid-workout. No digging through charts later.",
     screen: "workout-pr",
+    alt: "Justlog new personal record toast during a workout",
     tone: "olive",
     logan: "logan-pr",
     stickers: [
@@ -233,8 +243,8 @@ export function FeatureStory() {
                 {scenes.map((s, i) => (
                   <Image
                     key={s.screen}
-                    src={`/images/screens/${s.screen}.png`}
-                    alt=""
+                    src={`/images/screens/${s.screen}.webp`}
+                    alt={s.alt}
                     width={780}
                     height={1688}
                     sizes="300px"

@@ -1,10 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+import { JsonLd, legalPage } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'How Justlog collects, uses and protects your data: what we store, which service providers we use, and your rights.',
+  alternates: { canonical: '/privacy' },
+  openGraph: { url: '/privacy', title: 'Privacy Policy · Justlog', description: 'How Justlog collects, uses and protects your data: what we store, which service providers we use, and your rights.', images: ['/og.png'] },
+};
+
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-jl-bg text-jl-text font-sans">
+      <JsonLd data={legalPage('/privacy', 'Privacy Policy · Justlog')} />
       {/* Navigation */}
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">

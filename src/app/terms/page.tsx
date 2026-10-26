@@ -1,10 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+import { JsonLd, legalPage } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'The terms for using the Justlog workout tracker app and website, including subscriptions, acceptable use and liability.',
+  alternates: { canonical: '/terms' },
+  openGraph: { url: '/terms', title: 'Terms of Service · Justlog', description: 'The terms for using the Justlog workout tracker app and website, including subscriptions, acceptable use and liability.', images: ['/og.png'] },
+};
+
 
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-jl-bg text-jl-text font-sans">
+      <JsonLd data={legalPage('/terms', 'Terms of Service · Justlog')} />
       {/* Navigation */}
       <nav className="border-b border-gray-200 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">

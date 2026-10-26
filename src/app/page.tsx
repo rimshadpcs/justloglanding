@@ -15,6 +15,7 @@ import { SiteHeader } from "@/components/site-header";
 import { FeatureStory } from "@/components/feature-story";
 import { ShareStoryMockup, TutorialMockup } from "@/components/showcase";
 import { WidgetShowcase } from "@/components/widgets";
+import { JsonLd, faqPage, homeGraph } from "@/lib/seo";
 
 const container = "mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-20 min-[1400px]:px-[120px]";
 const h2 = "m-0 text-[40px] font-bold leading-[1.02] tracking-[-0.04em] sm:text-[56px]";
@@ -109,6 +110,9 @@ export default function Home() {
     <div className="min-h-screen overflow-x-clip bg-jl-bg text-jl-text">
       <SiteHeader container={container} />
 
+      <JsonLd data={homeGraph} />
+      <JsonLd data={faqPage(faqs)} />
+
       <main>
         {/* Hero */}
         <section className="rounded-b-[40px] bg-jl-accent pt-20 lg:pt-24">
@@ -142,10 +146,10 @@ export default function Home() {
             <div className="absolute left-1/2 top-0 h-[720px] w-[580px] origin-top -translate-x-1/2 scale-[0.56] sm:scale-[0.83] lg:left-auto lg:right-0 lg:origin-top-right lg:translate-x-0 lg:scale-[0.7] xl:scale-[0.86] min-[1400px]:scale-100">
               <div aria-hidden="true" className="jl-glow-white absolute left-1/2 top-1/2 -ml-[260px] -mt-[260px] h-[520px] w-[520px] rounded-full" />
               <div className="absolute left-[30px] top-[60px] -rotate-6">
-                <Phone screen="main" width={297} priority />
+                <Phone screen="main" width={297} priority alt="Justlog home screen with this week’s workouts and saved routines" />
               </div>
               <div className="absolute right-5 top-5">
-                <Phone screen="workout" width={320} priority />
+                <Phone screen="workout" width={320} priority alt="Justlog active workout showing last and best sets for Weighted Pull Ups" />
               </div>
               <Image
                 src="/images/logan/logan-idle.webp"
@@ -189,7 +193,7 @@ export default function Home() {
                 <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24">
                   <path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z" fill="#FF6600" />
                 </svg>
-                <span className="text-[22px] font-bold leading-none text-[#FF6600]" style={{ fontFamily: "Verdana, Geneva, sans-serif" }}>
+                <span className="text-[22px] font-bold leading-none text-[#C24E00]" style={{ fontFamily: "Verdana, Geneva, sans-serif" }}>
                   Hacker
                   <br />
                   News
@@ -245,8 +249,9 @@ export default function Home() {
         <section id="why" className={`${container} flex scroll-mt-28 flex-col gap-12 pt-24 lg:pt-[110px]`}>
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end lg:gap-10">
             <h2 className={`${h2} max-w-[640px]`}>Other apps want your attention. We want your next rep.</h2>
-            <p className="m-0 max-w-[380px] text-lg leading-normal text-jl-muted">
-              Feeds, coaches, streak guilt, upsells. We cut all of it and kept the log, because the log is what makes you stronger.
+            <p className="m-0 max-w-[440px] text-lg leading-normal text-jl-muted">
+              Justlog is a free workout tracker for iPhone and Android that shows your last and best numbers on every set.
+              No feeds, coaches, streak guilt or upsells. We kept the log, because the log is what makes you stronger.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
@@ -321,10 +326,10 @@ export default function Home() {
                 <div className="relative h-[640px] w-[600px] [zoom:0.48] sm:[zoom:0.72] md:[zoom:0.8] lg:[zoom:0.62] xl:[zoom:0.78] min-[1400px]:[zoom:0.84]">
                   <div aria-hidden="true" className="jl-glow absolute left-1/2 top-1/2 -ml-[260px] -mt-[260px] h-[520px] w-[520px] rounded-full opacity-60" />
                   <div className="absolute left-[300px] top-0 z-[1] rotate-[5deg]">
-                    <Phone screen="tabata-done" width={297} />
+                    <Phone screen="tabata-done" width={297} alt="Justlog Tabata session summary with jumps per round" />
                   </div>
                   <div className="absolute left-10 top-5 z-[2] -rotate-[5deg]">
-                    <Phone screen="tabata-run" width={297} />
+                    <Phone screen="tabata-run" width={297} alt="Justlog Tabata timer counting down a jump rope round" />
                   </div>
                 </div>
               </div>

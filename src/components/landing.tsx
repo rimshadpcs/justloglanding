@@ -18,8 +18,11 @@ export function Phone({
   className = "",
   style,
   priority = false,
+  alt,
 }: {
   screen: string;
+  /** Describe the screen when it carries meaning; omit for purely decorative phones. */
+  alt?: string;
   width: number;
   radius?: number;
   className?: string;
@@ -29,14 +32,14 @@ export function Phone({
   const inner = width - 16;
   return (
     <div
-      aria-hidden="true"
+      aria-hidden={alt ? undefined : true}
       className={`jl-phone-shadow shrink-0 box-border bg-jl-frame p-2 ${className}`}
       style={{ width, height: Math.round((inner * 844) / 390) + 16, borderRadius: radius, ...style }}
     >
       <div className="relative h-full w-full overflow-hidden" style={{ borderRadius: radius - 8 }}>
         <Image
-          src={`/images/screens/${screen}.png`}
-          alt=""
+          src={`/images/screens/${screen}.webp`}
+          alt={alt ?? ""}
           width={780}
           height={1688}
           sizes={`${inner}px`}
@@ -54,7 +57,6 @@ export function AppStoreButton() {
       href={APP_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Download on the App Store"
       className="flex h-14 items-center gap-2.5 rounded-[11px] border border-[#A6A6A6] bg-black pl-[17px] pr-5 text-white transition-transform hover:scale-[1.03]"
       style={{ fontFamily: "-apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" }}
     >
@@ -65,7 +67,7 @@ export function AppStoreButton() {
         />
       </svg>
       <span className="flex flex-col leading-none">
-        <span className="text-[11px] tracking-[0.02em]">Download on the</span>
+        <span className="text-[11px] tracking-[0.02em]">Download on the</span>{" "}
         <span className="mt-px text-[25px] font-semibold tracking-[-0.02em]">App Store</span>
       </span>
     </a>
@@ -78,7 +80,6 @@ export function GooglePlayButton() {
       href={PLAY_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Get it on Google Play"
       className="flex h-14 items-center gap-[11px] rounded-[11px] border border-[#A6A6A6] bg-black pl-[17px] pr-5 text-white transition-transform hover:scale-[1.03]"
       style={{ fontFamily: "'Product Sans', 'Google Sans', Roboto, Arial, sans-serif" }}
     >
@@ -89,7 +90,7 @@ export function GooglePlayButton() {
         <path d="M13.544 13.056l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z" fill="#EA4335" />
       </svg>
       <span className="flex flex-col leading-none">
-        <span className="text-[11px] tracking-[0.06em]">GET IT ON</span>
+        <span className="text-[11px] tracking-[0.06em]">GET IT ON</span>{" "}
         <span className="mt-0.5 text-2xl font-medium tracking-[-0.01em]">Google Play</span>
       </span>
     </a>
@@ -112,7 +113,6 @@ export function ProductHuntBadge({ size = "sm" }: { size?: "sm" | "lg" }) {
       href={PRODUCT_HUNT_URL}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Product Hunt: #2 Product of the Day"
       className={`flex shrink-0 items-center border border-[#E5E5E0] bg-white text-[#111113] ${
         lg ? "h-[62px] gap-3 rounded-[14px] pl-3 pr-[21px]" : "h-[50px] gap-2.5 rounded-[11px] pl-2.5 pr-[17px]"
       }`}
@@ -128,7 +128,7 @@ export function ProductHuntBadge({ size = "sm" }: { size?: "sm" | "lg" }) {
         </text>
       </svg>
       <span className="flex flex-col leading-[1.05]">
-        <span className={`font-bold tracking-[0.04em] ${lg ? "text-[11px]" : "text-[9px]"}`}>PRODUCT HUNT</span>
+        <span className={`font-bold tracking-[0.04em] ${lg ? "text-[11px]" : "text-[9px]"}`}>PRODUCT HUNT</span>{" "}
         <span className={`mt-0.5 font-bold tracking-[-0.01em] ${lg ? "text-xl" : "text-base"}`}>#2 Product of the Day</span>
       </span>
     </a>
