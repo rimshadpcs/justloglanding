@@ -16,6 +16,9 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Keep files at Netlify's edge until the next deploy (deploys purge it), instead of
+    # revalidating with the origin on each request. Browsers still revalidate HTML.
+    Netlify-CDN-Cache-Control = "public, durable, s-maxage=31536000, stale-while-revalidate=31536000"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
