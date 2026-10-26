@@ -1,0 +1,5 @@
+[
+  { "dir": "images/screens", "prefix": "", "widths": [320, 480, 640] },
+  { "dir": "images/logan", "prefix": "logan-", "widths": [160, 320, 480, 640] },
+  { "dir": "images/landing", "prefix": "", "widths": [320, 480] }
+]

@@ -1,11 +1,9 @@
+import variants from "./image-variants.json";
+
 // next/image loader for the static export. There's no image server, so smaller copies of each
 // image are generated ahead of time next to the original as `<name>-<width>.webp`.
-// To add an image here, save those copies alongside it (same widths as its folder below).
-const VARIANT_WIDTHS: [prefix: string, widths: number[]][] = [
-  ["/images/screens/", [320, 480, 640]],
-  ["/images/logan/logan-", [160, 320, 480, 640]],
-  ["/images/landing/", [320, 480]],
-];
+// After adding an image to one of the folders in image-variants.json, run `npm run images`.
+const VARIANT_WIDTHS = variants.map((v) => [`/${v.dir}/${v.prefix}`, v.widths] as const);
 
 export default function imageLoader({ src, width }: { src: string; width: number }) {
   const match = VARIANT_WIDTHS.find(([prefix]) => src.startsWith(prefix));
