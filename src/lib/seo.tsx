@@ -5,16 +5,16 @@ export const SITE_NAME = "Justlog";
 export const HOME_TITLE = "Justlog – Simple Workout Tracker & Gym Log";
 export const HOME_DESCRIPTION =
   "Justlog puts last week's numbers on every set, so you always know what to beat. A free workout log for iPhone and Android.";
-export const APP_DESCRIPTION =
-  "A minimalist workout tracker that shows last week's numbers on every set. No social feed, no meal plans, notifications only while you train.";
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const LOGO_URL = `${SITE_URL}/images/logan/icon-final.png`;
 
-const appOffer = (url: string) => ({ "@type": "Offer", price: "0", priceCurrency: "USD", url });
-
-/** Organization, WebSite, WebPage and both store apps, linked by @id. Values match the public store listings. */
+/**
+ * Organization, WebSite and WebPage, linked by @id. Both store listings are in the Organization's sameAs.
+ * MobileApplication is left out on purpose: Google treats it as invalid without aggregateRating or review,
+ * and a rating may only be marked up if the same rating and count are shown on the page.
+ */
 export const homeGraph = {
   "@context": "https://schema.org",
   "@graph": [
@@ -48,43 +48,7 @@ export const homeGraph = {
       name: HOME_TITLE,
       description: HOME_DESCRIPTION,
       isPartOf: { "@id": WEBSITE_ID },
-      about: [{ "@id": `${SITE_URL}/#app-ios` }, { "@id": `${SITE_URL}/#app-android` }],
       inLanguage: "en",
-    },
-    {
-      "@type": "MobileApplication",
-      "@id": `${SITE_URL}/#app-ios`,
-      name: SITE_NAME,
-      alternateName: "Workout tracking : Justlog",
-      description: APP_DESCRIPTION,
-      operatingSystem: "iOS 17.6 or later",
-      applicationCategory: "HealthApplication",
-      applicationSubCategory: "Workout tracker",
-      contentRating: "4+",
-      softwareVersion: "2.1",
-      datePublished: "2025-08-15",
-      image: LOGO_URL,
-      url: APP_STORE_URL,
-      installUrl: APP_STORE_URL,
-      publisher: { "@id": ORG_ID },
-      author: { "@id": ORG_ID },
-      offers: appOffer(APP_STORE_URL),
-    },
-    {
-      "@type": "MobileApplication",
-      "@id": `${SITE_URL}/#app-android`,
-      name: SITE_NAME,
-      alternateName: "Workout tracker Log - Justlog",
-      description: APP_DESCRIPTION,
-      operatingSystem: "Android",
-      applicationCategory: "HealthApplication",
-      applicationSubCategory: "Workout tracker",
-      image: LOGO_URL,
-      url: PLAY_STORE_URL,
-      installUrl: PLAY_STORE_URL,
-      publisher: { "@id": ORG_ID },
-      author: { "@id": ORG_ID },
-      offers: appOffer(PLAY_STORE_URL),
     },
   ],
 };
