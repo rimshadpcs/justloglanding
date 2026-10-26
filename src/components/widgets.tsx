@@ -66,9 +66,14 @@ const small =
 const medium =
   "box-border flex h-[200px] w-[424px] shrink-0 rounded-[32px] bg-[#161618] px-5 py-[18px] text-[#F4F4F5] max-sm:[zoom:0.72]";
 
-export function WidgetShowcase() {
+/** `bare` drops the panel background so the widgets can sit on a tile of their own. */
+export function WidgetShowcase({ bare = false }: { bare?: boolean }) {
   return (
-    <div className="box-border flex w-full max-w-[1200px] flex-col items-center gap-4 rounded-[28px] bg-[#1E2433] px-3 py-6 sm:gap-6 sm:rounded-[40px] sm:p-12">
+    <div
+      className={`box-border flex w-full flex-col items-center gap-4 sm:gap-6 ${
+        bare ? "" : "max-w-[1200px] rounded-[28px] bg-[#111113] px-3 py-6 sm:rounded-[40px] sm:p-12"
+      }`}
+    >
       <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
         <div className={`${small} items-center bg-[#161618] text-[#F4F4F5]`}>
           <Label>WEEKLY GOAL</Label>

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Justlog - Just log. No fluff.",
   description:
-    "The workout tracker that gets out of your way. See what you lifted last time, beat it, log the set.",
+    "Justlog puts last week's numbers on every set, so you always know what to beat. A free workout log for iPhone and Android.",
   icons: {
     icon: "/images/logan/icon-final.png",
   },

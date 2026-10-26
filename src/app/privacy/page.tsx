@@ -60,8 +60,8 @@ export default function PrivacyPolicy() {
           
           <h2>What We Don&apos;t Do</h2>
           <ul>
-            <li><strong>No notifications</strong>: We don&apos;t send push notifications, emails, or any form of marketing communications</li>
-            <li><strong>No data selling</strong>: We never sell, rent, or share your personal information with third parties</li>
+            <li><strong>No marketing notifications</strong>: The only notifications Justlog shows are while you train, such as your rest timer and set controls on the lock screen. We never send marketing push notifications or emails</li>
+            <li><strong>No data selling</strong>: We never sell or rent your personal information. We share data only with service providers that run parts of Justlog for us, such as Google Firebase for storage and analytics, and Google&apos;s Gemini API for routine import (see below), and only for that purpose</li>
             <li><strong>No external tracking</strong>: We don&apos;t track your behavior outside the app</li>
             <li><strong>No marketing analytics</strong>: Analytics are used solely for app improvement</li>
             <li><strong>No personal data in analytics</strong>: Workout content and personal details aren&apos;t tracked</li>
@@ -120,7 +120,7 @@ export default function PrivacyPolicy() {
           <h2>Contact Us</h2>
           <p>If you have questions about this privacy policy or your data, contact us at: <a href="mailto:justlogapp@gmail.com" className="underline">justlogapp@gmail.com</a></p>
           
-          <p><em>Last updated: 10/17/2026</em></p>
+          <p><em>Last updated: 10/26/2026</em></p>
         </div>
       </div>
     </div>
