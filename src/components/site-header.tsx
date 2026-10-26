@@ -33,7 +33,7 @@ export function SiteHeader({ container }: { container: string }) {
     >
       <div className={`${container} flex h-20 items-center gap-6 lg:h-24 lg:gap-10`}>
         <Link href="/" className="flex items-center gap-3 text-jl-text">
-          <Image src="/images/logan/icon-final.png" alt="" width={36} height={36} className="block shrink-0 rounded-lg" />
+          <Image src="/images/logan/icon-final.png" alt="Justlog app icon" width={36} height={36} className="block shrink-0 rounded-lg" />
           <span className="text-[22px] font-semibold tracking-[-0.02em]">Justlog</span>
         </Link>
         <nav aria-label="Main" className="hidden flex-1 justify-center gap-6 whitespace-nowrap text-base lg:flex xl:gap-8">

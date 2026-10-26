@@ -96,7 +96,7 @@ function Logo({ size = 36, radius = 8 }: { size?: number; radius?: number }) {
   return (
     <Image
       src="/images/logan/icon-final.png"
-      alt=""
+      alt="Justlog app icon"
       width={size}
       height={size}
       className="block shrink-0"
@@ -468,7 +468,7 @@ export default function Home() {
             </div>
             <Image
               src="/images/logan/logan-welcome-back.webp"
-              alt=""
+              alt="Logan the beaver peeking over a log"
               width={140}
               height={140}
               className="absolute -right-2 -top-[70px] h-[100px] w-[100px] object-contain sm:-right-[50px] sm:h-[140px] sm:w-[140px]"

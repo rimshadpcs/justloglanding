@@ -147,6 +147,16 @@ const stickerStyles = {
   accent: "bg-[#D4FF3A] text-[#0B0B0C] ring-2 ring-[#0B0B0C] shadow-[0_12px_30px_rgba(0,0,0,0.18)]",
 };
 
+const loganAlt: Record<string, string> = {
+  "logan-solid": "Logan the beaver flexing",
+  "logan-waiting": "Logan the beaver sitting by a pile of logs",
+  "logan-welcome-back": "Logan the beaver peeking over a log",
+  "logan-resting": "Logan the beaver resting with a water bottle",
+  "logan-crushed-it": "Logan the beaver jumping for joy",
+  "logan-oops": "Logan the beaver scratching his head",
+  "logan-pr": "Logan the beaver lifting a weight plate",
+};
+
 // Vertical scroll distance each scene gets, in viewport heights.
 const SCENE_VH = 80;
 
@@ -279,7 +289,7 @@ export function FeatureStory() {
               <Image
                 key={s.label + s.logan}
                 src={`/images/logan/${s.logan}.webp`}
-                alt=""
+                alt={loganAlt[s.logan]}
                 width={180}
                 height={180}
                 className={`absolute -bottom-4 z-20 h-[110px] w-[110px] object-contain transition-all duration-500 ease-out motion-reduce:transition-none sm:h-[170px] sm:w-[170px] ${

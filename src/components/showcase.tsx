@@ -53,7 +53,7 @@ export function ShareStoryMockup() {
         </span>
         <Image
           src="/images/logan/logan-solid.webp"
-          alt=""
+          alt="Logan the beaver flexing"
           width={130}
           height={130}
           className="mt-auto h-[130px] w-[130px] self-end object-contain"
@@ -67,7 +67,7 @@ export function ShareStoryMockup() {
         className="absolute left-0 top-0 box-border h-[650px] w-[340px] -rotate-3 overflow-hidden rounded-[38px] border-[7px] border-jl-frame bg-black shadow-[0_40px_90px_rgba(17,17,19,0.3)]"
       >
         <div className="absolute inset-x-0 top-0 h-[572px] overflow-hidden rounded-b-[18px] bg-[#1E2026]">
-          <Image src="/images/landing/pullday.webp" alt="" fill sizes="326px" className="object-cover" />
+          <Image src="/images/landing/pullday.webp" alt="Lifter hanging from a pull-up bar in a gym" fill sizes="326px" className="object-cover" />
           <div className="absolute inset-x-0 top-0 h-[260px] bg-[linear-gradient(0deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.7)_72%)]" />
           <div className="absolute inset-x-0 bottom-0 h-[170px] bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.72)_70%)]" />
 
@@ -125,7 +125,7 @@ export function ShareStoryMockup() {
               ))}
             </span>
             <span className="flex items-center gap-2 text-sm font-semibold">
-              <Image src="/images/logan/icon-final.png" alt="" width={24} height={24} className="rounded-md" />
+              <Image src="/images/logan/icon-final.png" alt="Justlog app icon" width={24} height={24} className="rounded-md" />
               justlog.app
             </span>
           </div>
@@ -222,7 +222,7 @@ export function TutorialMockup() {
         className="absolute right-0 top-0 box-border h-[510px] w-[256px] overflow-hidden rounded-[32px] border-[6px] border-jl-frame bg-black shadow-[0_34px_80px_rgba(17,17,19,0.28)]"
       >
         <div className="absolute inset-x-0 bottom-12 top-0 bg-[#1E2026]">
-          <Image src="/images/landing/inclinesmith.webp" alt="" fill sizes="244px" className="object-cover" />
+          <Image src="/images/landing/inclinesmith.webp" alt="Incline Smith machine press demonstration" fill sizes="244px" className="object-cover" />
         </div>
         <div className="absolute inset-x-0 top-0 h-[70px] bg-[linear-gradient(0deg,rgba(0,0,0,0),rgba(0,0,0,0.5))]" />
         <div className="absolute inset-x-0 bottom-12 h-[200px] bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.75)_75%)]" />
