@@ -20,7 +20,6 @@ type Scene = {
   /** Describes the screenshot for screen readers and image search. */
   alt: string;
   tone: Tone;
-  logan: string;
   stickers: Sticker[];
 };
 
@@ -32,7 +31,6 @@ const scenes: Scene[] = [
     screen: "workout",
     alt: "Justlog active workout screen with last and best weights next to each set",
     tone: "lime",
-    logan: "logan-solid",
     stickers: [
       { text: "Last · 5 × 10", top: "22%", variant: "light" },
       { text: "Best · 15 × 10", top: "38%", variant: "dark" },
@@ -45,7 +43,6 @@ const scenes: Scene[] = [
     screen: "picker",
     alt: "Justlog exercise search finding Barbell Hip Thrust and Romanian Deadlift",
     tone: "ink",
-    logan: "logan-waiting",
     stickers: [
       { text: "benchpress ✓", top: "16%", variant: "accent" },
       { text: "bench-press ✓", top: "30%", variant: "light" },
@@ -59,7 +56,6 @@ const scenes: Scene[] = [
     screen: "history",
     alt: "Justlog workout calendar with each day coloured by routine",
     tone: "pale",
-    logan: "logan-welcome-back",
     stickers: [
       { text: "● Push", top: "20%", variant: "light" },
       { text: "● Legs", top: "28%", variant: "light" },
@@ -73,7 +69,6 @@ const scenes: Scene[] = [
     screen: "notification",
     alt: "Justlog rest timer and set controls on the iPhone lock screen",
     tone: "olive",
-    logan: "logan-resting",
     stickers: [
       { text: "Rest 1:09", top: "24%", variant: "accent" },
       { text: "Complete set ✓", top: "42%", variant: "light" },
@@ -86,7 +81,6 @@ const scenes: Scene[] = [
     screen: "finish",
     alt: "Justlog workout summary asking how the workout felt: Meh, Solid or Crushed it",
     tone: "lime",
-    logan: "logan-crushed-it",
     stickers: [
       { text: "😐 Meh", top: "18%", variant: "light" },
       { text: "💪 Solid", top: "26%", variant: "dark" },
@@ -100,7 +94,6 @@ const scenes: Scene[] = [
     screen: "counter-stats",
     alt: "Justlog pull-up counter showing today, this week and all-time totals",
     tone: "ink",
-    logan: "logan-oops",
     stickers: [
       { text: "+1", top: "22%", variant: "accent" },
       { text: "157 all time", top: "36%", variant: "light" },
@@ -113,7 +106,6 @@ const scenes: Scene[] = [
     screen: "timer",
     alt: "Justlog full-screen timer for a hollow body hold",
     tone: "pale",
-    logan: "logan-waiting",
     stickers: [
       { text: "0:13 left", top: "26%", variant: "dark" },
       { text: "+10s", top: "40%", variant: "accent" },
@@ -126,7 +118,6 @@ const scenes: Scene[] = [
     screen: "workout-pr",
     alt: "Justlog new personal record toast during a workout",
     tone: "olive",
-    logan: "logan-pr",
     stickers: [
       { text: "🏆 New PR", top: "18%", variant: "accent" },
       { text: "+15 kg", top: "34%", variant: "light" },
@@ -145,16 +136,6 @@ const stickerStyles = {
   light: "bg-white text-[#111113] shadow-[0_12px_30px_rgba(0,0,0,0.14)]",
   dark: "bg-[#111113] text-[#F4F4F5] shadow-[0_12px_30px_rgba(0,0,0,0.25)]",
   accent: "bg-[#D4FF3A] text-[#0B0B0C] ring-2 ring-[#0B0B0C] shadow-[0_12px_30px_rgba(0,0,0,0.18)]",
-};
-
-const loganAlt: Record<string, string> = {
-  "logan-solid": "Logan the beaver flexing",
-  "logan-waiting": "Logan the beaver sitting by a pile of logs",
-  "logan-welcome-back": "Logan the beaver peeking over a log",
-  "logan-resting": "Logan the beaver resting with a water bottle",
-  "logan-crushed-it": "Logan the beaver jumping for joy",
-  "logan-oops": "Logan the beaver scratching his head",
-  "logan-pr": "Logan the beaver lifting a weight plate",
 };
 
 // Vertical scroll distance each scene gets, in viewport heights.
@@ -284,19 +265,6 @@ export function FeatureStory() {
                 </span>
               ));
             })}
-
-            {scenes.map((s, i) => (
-              <Image
-                key={s.label + s.logan}
-                src={`/images/logan/${s.logan}.webp`}
-                alt={loganAlt[s.logan]}
-                width={180}
-                height={180}
-                className={`absolute -bottom-4 z-20 h-[110px] w-[110px] object-contain transition-all duration-500 ease-out motion-reduce:transition-none sm:h-[170px] sm:w-[170px] ${
-                  i % 2 === 1 ? "-left-16 sm:-left-28" : "-right-16 sm:-right-28"
-                } ${i === active ? "translate-y-0 rotate-0 opacity-100" : "pointer-events-none translate-y-6 -rotate-6 opacity-0"}`}
-              />
-            ))}
           </div>
         </div>
       </div>

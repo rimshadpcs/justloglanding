@@ -4,7 +4,7 @@ import {
   Check,
   Cross,
   Phone,
-  ProductHuntBadge,
+  PRODUCT_HUNT_URL,
   StoreButtons,
   UNEED_URL,
 } from "@/components/landing";
@@ -52,6 +52,56 @@ const importedExercises = [
   { name: "Incline Dumbbell Press", sub: "Chest · dumbbell", sets: "3 × 10" },
   { name: "Cable Fly", sub: "New exercise", sets: "3 × 12", isNew: true },
   { name: "Lateral Raise", sub: "Shoulders · dumbbell", sets: "3 sets" },
+];
+
+// Shown greyscale in a single strip; colour comes back on hover.
+const featuredIn = [
+  {
+    caption: "#2 Product of the Day",
+    href: PRODUCT_HUNT_URL,
+    logo: (
+      <>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24">
+          <path
+            d="M13.604 8.4h-3.405V12h3.405c.995 0 1.801-.806 1.801-1.801 0-.993-.805-1.799-1.801-1.799zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.604 14.4h-3.405V18H7.801V6h5.804c2.319 0 4.2 1.88 4.2 4.199 0 2.321-1.881 4.201-4.201 4.201z"
+            fill="#DA552F"
+          />
+        </svg>
+        Product Hunt
+      </>
+    ),
+  },
+  {
+    caption: "Top tracking apps of the year",
+    href: UNEED_URL,
+    logo: (
+      <span className="text-[24px] font-black tracking-[0.02em]" style={{ fontFamily: "Arial, sans-serif" }}>
+        UNEED<span className="ml-0.5 align-top text-sm text-[#F5A623]">✦</span>
+      </span>
+    ),
+  },
+  {
+    caption: "Show HN",
+    logo: (
+      <>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24">
+          <path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z" fill="#FF6600" />
+        </svg>
+        Hacker News
+      </>
+    ),
+  },
+  {
+    caption: "Built in public",
+    logo: (
+      <>
+        <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24">
+          <path d="M0 0h24v24H0V0Zm5.4 17.2h2.4V6.8H5.4v10.4Zm4.8 0h2.4v-4h3.6v4h2.4V6.8h-2.4v4h-3.6v-4h-2.4v10.4Z" fill="#0E2150" />
+        </svg>
+        Indie Hackers
+      </>
+    ),
+  },
 ];
 
 const testimonials = [
@@ -155,9 +205,9 @@ export default function Home() {
                 width={270}
                 height={270}
                 priority
-                className="absolute -left-[70px] bottom-2.5 z-[3] h-[270px] w-[270px] object-contain"
+                className="absolute -left-[70px] bottom-2.5 z-[3] h-[270px] w-[270px] object-contain max-sm:-left-[10px]"
               />
-              <div className="absolute -left-[60px] bottom-[286px] z-[4] flex w-60 flex-col gap-[3px] rounded-[22px] bg-jl-s1 px-4 py-3.5 shadow-[0_12px_30px_rgba(17,17,19,0.12)]">
+              <div className="absolute -left-[60px] bottom-[286px] z-[4] max-sm:left-0 flex w-60 flex-col gap-[3px] rounded-[22px] bg-jl-s1 px-4 py-3.5 shadow-[0_12px_30px_rgba(17,17,19,0.12)]">
                 <span className="text-lg font-bold tracking-[-0.01em]">Hey, I’m Logan 👋</span>
                 <span className="text-sm leading-[1.4] text-jl-muted">I remember your numbers so you don’t have to.</span>
                 <span aria-hidden="true" className="absolute -bottom-[7px] left-24 h-4 w-4 rotate-45 rounded-[3px] bg-jl-s1" />
@@ -168,52 +218,39 @@ export default function Home() {
         </section>
 
         {/* As featured in */}
-        <section aria-label="As featured in and what lifters say" className={`${container} flex flex-col items-center gap-6 pt-16 lg:pt-20`}>
+        <section aria-label="As featured in and what lifters say" className={`${container} flex flex-col gap-6 pt-16 lg:pt-20`}>
           <span className={`${eyebrow} text-jl-muted`}>AS FEATURED IN</span>
-          <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1fr]">
-            <div className="flex h-[120px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
-              <ProductHuntBadge />
-              <span className="text-sm text-jl-muted">Featured and won</span>
-            </div>
-            <a
-              href={UNEED_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-[120px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1 transition-transform hover:-translate-y-0.5"
-            >
-              <span className="flex h-[62px] items-center text-[40px] font-black tracking-[0.02em] text-[#1C1C1C]" style={{ fontFamily: "Arial, sans-serif" }}>
-                UNEED<span className="-mt-[22px] ml-0.5 text-2xl text-[#F5A623]">✦</span>
-              </span>
-              <span className="text-sm text-jl-muted">Top tracking apps of the year</span>
-            </a>
-            <div className="flex h-[120px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
-              <span className="flex h-[62px] items-center gap-2.5">
-                <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24">
-                  <path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z" fill="#FF6600" />
-                </svg>
-                <span className="text-[22px] font-bold leading-none text-[#C24E00]" style={{ fontFamily: "Verdana, Geneva, sans-serif" }}>
-                  Hacker
-                  <br />
-                  News
-                </span>
-              </span>
-              <span className="text-sm text-jl-muted">Show HN</span>
-            </div>
-            <div className="flex h-[120px] flex-col items-center justify-center gap-3 rounded-3xl bg-jl-s1">
-              <span className="flex h-[62px] items-center gap-2.5">
-                <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24">
-                  <path d="M0 0h24v24H0V0Zm5.4 17.2h2.4V6.8H5.4v10.4Zm4.8 0h2.4v-4h3.6v4h2.4V6.8h-2.4v4h-3.6v-4h-2.4v10.4Z" fill="#0E2150" />
-                </svg>
-                <span className="text-[22px] font-bold leading-none text-[#0E2150]" style={{ fontFamily: "Arial, sans-serif" }}>
-                  Indie
-                  <br />
-                  Hackers
-                </span>
-              </span>
-              <span className="text-sm text-jl-muted">Built in public</span>
-            </div>
-          </div>
-          <h2 className={`${h2} mt-10 text-center`}>Heard on the gym floor.</h2>
+          <ul className="m-0 grid list-none grid-cols-2 gap-y-8 p-0 md:grid-cols-4 md:divide-x md:divide-jl-line">
+            {featuredIn.map((f) => {
+              const body = (
+                <>
+                  <span className="flex h-9 items-center gap-2 text-[19px] font-bold leading-none text-jl-text">
+                    {f.logo}
+                  </span>
+                  <span className="text-[13px] text-jl-muted">{f.caption}</span>
+                </>
+              );
+              return (
+                <li key={f.caption} className="flex md:px-8 md:first:pl-0">
+                  {f.href ? (
+                    <a
+                      href={f.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-col gap-2 opacity-70 grayscale transition-[filter,opacity] hover:opacity-100 hover:grayscale-0"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <div className="flex flex-col gap-2 opacity-70 grayscale transition-[filter,opacity] hover:opacity-100 hover:grayscale-0">
+                      {body}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+          <h2 className={`${h2} mt-14`}>Heard on the gym floor.</h2>
           <div className="mt-4 grid w-full items-stretch gap-5 md:grid-cols-3">
             {testimonials.map((t) => (
               <figure
@@ -254,13 +291,7 @@ export default function Home() {
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="flex flex-col gap-[22px] rounded-[28px] bg-jl-s1 p-7 sm:p-9 md:min-h-[400px]">
-              <div className="flex items-center justify-between">
-                <span className="text-[15px] font-semibold text-jl-muted">Other apps</span>
-                <svg role="img" aria-label="Chart: other apps keep adding features over time" width="180" height="44" viewBox="0 0 180 44">
-                  <path d="M4 40 L50 34 L90 22 L130 14 L176 4" fill="none" stroke="#A1A1AA" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  <circle cx="176" cy="4" r="3.5" fill="#A1A1AA" />
-                </svg>
-              </div>
+              <span className="text-[15px] font-semibold text-jl-muted">Other apps</span>
               <ul className="m-0 flex list-none flex-col gap-[18px] p-0">
                 {otherApps.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-[17px] text-jl-muted">
@@ -270,7 +301,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="flex flex-col gap-[22px] rounded-[28px] border-[1.5px] border-jl-ink bg-jl-soft p-7 sm:p-9 md:min-h-[400px]">
+            <div className="flex flex-col gap-[22px] rounded-[28px] bg-jl-soft p-7 sm:p-9 md:min-h-[400px]">
               <div className="flex items-center gap-2.5">
                 <Logo size={26} radius={6} />
                 <span className="text-[15px] font-semibold">Justlog</span>
@@ -359,7 +390,7 @@ export default function Home() {
                   Weekly goal, streak, next workout and a +1 counter, right on your home screen.
                 </p>
               </div>
-              <div className="my-auto flex justify-center">
+              <div className="flex justify-center">
                 <div className="sm:w-[872px] sm:[zoom:0.58] md:[zoom:0.73] lg:[zoom:0.44] xl:[zoom:0.555] min-[1400px]:[zoom:0.6]">
                   <WidgetShowcase bare />
                 </div>
