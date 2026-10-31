@@ -36,7 +36,7 @@ export default function PrivacyPolicy() {
       <div className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
         <div className="prose prose-lg max-w-none">
-          <p><strong>Effective Date:</strong> 05/06/2025</p>
+          <p><strong>Effective Date:</strong> 10/23/2026</p>
           
           <h2>Our Commitment to Privacy</h2>
           <p>Just Log is built with privacy at its core. We believe your workout data should remain yours, and we&apos;ve designed our app to collect only the minimal information necessary to provide our service.</p>
@@ -131,7 +131,7 @@ export default function PrivacyPolicy() {
           <h2>Contact Us</h2>
           <p>If you have questions about this privacy policy or your data, contact us at: <a href="mailto:justlogapp@gmail.com" className="underline">justlogapp@gmail.com</a></p>
           
-          <p><em>Last updated: 10/26/2026</em></p>
+          <p><em>Last updated: 10/23/2026</em></p>
         </div>
       </div>
     </div>

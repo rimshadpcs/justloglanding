@@ -36,7 +36,7 @@ export default function TermsOfService() {
       <div className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
         <div className="prose prose-lg max-w-none">
-          <p><strong>Effective Date:</strong> 05/06/2025</p>
+          <p><strong>Effective Date:</strong> 10/23/2026</p>
           
           <h2>Agreement to Terms</h2>
           <p>By using Just Log, you agree to these Terms of Service. If you don&apos;t agree, please don&apos;t use our app.</p>
@@ -139,7 +139,7 @@ export default function TermsOfService() {
           <h2>Entire Agreement</h2>
           <p>These Terms of Service, along with our Privacy Policy, constitute the entire agreement between you and Just Log.</p>
           
-          <p><em>Last updated: 05/06/2025</em></p>
+          <p><em>Last updated: 10/23/2026</em></p>
         </div>
       </div>
     </div>

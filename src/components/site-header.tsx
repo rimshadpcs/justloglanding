@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ProductHuntBadge } from "@/components/landing";
+import { FEATURE_REQUEST_URL, ProductHuntBadge } from "@/components/landing";
 
 const navLinks = [
   { href: "#why", label: "Why Justlog" },
@@ -44,12 +44,23 @@ export function SiteHeader({ container }: { container: string }) {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-3 lg:ml-0">
-          <div className="hidden sm:block lg:hidden xl:block">
+          <a
+            href={FEATURE_REQUEST_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Request a feature"
+            title="Request a feature"
+            className="flex h-[50px] shrink-0 items-center gap-2 whitespace-nowrap rounded-2xl bg-jl-text px-[14px] text-[15px] font-semibold text-jl-bg transition-opacity hover:opacity-85 md:px-[18px] lg:px-[14px] 2xl:px-[18px]"
+          >
+            <Image src="/images/userjot.webp" alt="" width={22} height={22} unoptimized className="block shrink-0" />
+            <span className="hidden md:inline lg:hidden 2xl:inline">Request a feature</span>
+          </a>
+          <div className="hidden shrink-0 sm:block lg:hidden xl:block">
             <ProductHuntBadge />
           </div>
           <a
             href="#download"
-            className="flex h-[50px] items-center rounded-2xl bg-jl-text px-[22px] text-[15px] font-semibold text-jl-bg transition-opacity hover:opacity-85"
+            className="flex h-[50px] shrink-0 items-center whitespace-nowrap rounded-2xl bg-jl-text px-[22px] text-[15px] font-semibold text-jl-bg transition-opacity hover:opacity-85"
           >
             Download
           </a>

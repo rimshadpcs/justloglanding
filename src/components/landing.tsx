@@ -7,8 +7,10 @@ export const PRODUCT_HUNT_URL =
   "https://www.producthunt.com/products/just-log?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_source=badge-just-log-2";
 export const UNEED_URL = "https://www.uneed.best/best-products-by-tag/tracking";
 export const CONTACT_URL = "mailto:justlogapp@gmail.com";
+export const FEATURE_REQUEST_URL = "https://justlog.userjot.com/board/features";
 export const FEEDBACK_URL = "https://tally.so/r/w4y9ao";
 export const INSTAGRAM_URL = "https://instagram.com/justlogapp";
+export const TIKTOK_URL = "https://www.tiktok.com/@justlogapp";
 
 /** A phone frame showing a 390×844 app screen, sized by its outer width. */
 export function Phone({

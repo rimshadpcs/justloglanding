@@ -1,4 +1,4 @@
-import { APP_STORE_URL, INSTAGRAM_URL, PLAY_STORE_URL } from "@/components/landing";
+import { APP_STORE_URL, INSTAGRAM_URL, TIKTOK_URL, PLAY_STORE_URL } from "@/components/landing";
 
 export const SITE_URL = "https://justlog.app";
 export const SITE_NAME = "Justlog";
@@ -34,6 +34,7 @@ export const homeGraph = {
       },
       sameAs: [
         INSTAGRAM_URL,
+        TIKTOK_URL,
         "https://www.producthunt.com/products/just-log",
         "https://www.indiehackers.com/product/justlog",
         APP_STORE_URL,

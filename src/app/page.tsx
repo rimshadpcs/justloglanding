@@ -1,17 +1,15 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   CONTACT_URL,
   Check,
   Cross,
-  FEEDBACK_URL,
-  INSTAGRAM_URL,
   Phone,
   ProductHuntBadge,
   StoreButtons,
   UNEED_URL,
 } from "@/components/landing";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { FeatureStory } from "@/components/feature-story";
 import { ShareStoryMockup, TutorialMockup } from "@/components/showcase";
 import { WidgetShowcase } from "@/components/widgets";
@@ -520,52 +518,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section id="download" className={`${container} scroll-mt-28 pt-20 lg:pt-28`}>
-          <div className="relative flex flex-col items-center justify-between gap-6 overflow-hidden rounded-[40px] bg-jl-frame px-6 pt-12 text-[#F4F4F5] sm:px-12 md:flex-row md:px-20 md:py-0 lg:h-[440px]">
-            <div className="relative flex flex-col gap-[22px] md:py-16">
-              <h2 className="m-0 text-[52px] font-bold leading-[0.98] tracking-[-0.05em] sm:text-[72px]">
-                Go beat
-                <br />
-                <span className="text-jl-accent">last week.</span>
-              </h2>
-              <p className="m-0 text-[19px] text-[#A1A1AA]">Free to download. 10,000+ lifters already logging.</p>
-              <StoreButtons />
-            </div>
-            <Image
-              src="/images/logan/logan-crushed-it.webp"
-              alt="Logan cheering"
-              width={320}
-              height={320}
-              className="relative h-auto w-[240px] object-contain sm:w-[320px]"
-            />
-          </div>
-        </section>
       </main>
 
-      {/* Footer */}
-      <footer className={`${container} flex flex-col gap-8 py-16 text-[15px] md:flex-row md:items-center md:gap-10 lg:py-24`}>
-        <div className="flex items-center gap-3">
-          <Logo size={30} radius={7} />
-          <span className="flex flex-col">
-            <span className="text-[17px] font-semibold">Justlog</span>
-            <span className="text-sm text-jl-muted">A workout log. Nothing else.</span>
-          </span>
-        </div>
-        <nav aria-label="Footer" className="flex flex-1 flex-wrap gap-x-7 gap-y-3 md:justify-end">
-          <Link href="/privacy" className="text-jl-muted transition-colors hover:text-jl-text">Privacy</Link>
-          <Link href="/terms" className="text-jl-muted transition-colors hover:text-jl-text">Terms</Link>
-          <a href={CONTACT_URL} className="text-jl-muted transition-colors hover:text-jl-text">
-            Contact
-          </a>
-          <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className="text-jl-muted transition-colors hover:text-jl-text">
-            Send feedback
-          </a>
-          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-jl-text">
-            @justlogapp
-          </a>
-        </nav>
-      </footer>
+      <SiteFooter container={container} />
     </div>
   );
 }
